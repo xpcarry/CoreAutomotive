@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{92B201C0-0547-4021-90C9-706E3C4874FB}|Default">
   <MonoDevelop.Ide.ItemProperties.CoreAutomotive PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CoreAutomotive/Models/Samochod.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CoreAutomotive/Program.cs">
     <Files>
       <File FileName="CoreAutomotive/Models/AppDbContext.cs" Line="11" Column="10" />
       <File FileName="CoreAutomotive/Models/DbInitializer.cs" Line="27" Column="36" />
       <File FileName="CoreAutomotive/Models/MockSamochodRepository.cs" Line="21" Column="1" />
-      <File FileName="CoreAutomotive/Program.cs" Line="37" Column="1" />
+      <File FileName="CoreAutomotive/Program.cs" Line="12" Column="25" />
       <File FileName="CoreAutomotive/Models/Samochod.cs" Line="8" Column="26" />
     </Files>
     <Pads>
@@ -13,10 +13,9 @@
         <State name="__root__">
           <Node name="CoreAutomotive" expanded="True">
             <Node name="CoreAutomotive" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="Samochod.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
