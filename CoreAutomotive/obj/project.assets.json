@@ -8406,7 +8406,7 @@
       "outputPath": "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/albertbedynski/.nuget/NuGet/NuGet.Config"
+        "/Users/albertbedynski/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
