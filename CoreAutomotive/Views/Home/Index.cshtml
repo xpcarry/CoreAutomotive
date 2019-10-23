@@ -2,8 +2,6 @@
 
 
 <div class="row"><h1>@Model.Tytul</h1></div>
-
-
 <div class="row">
     @foreach (var samochod in Model.Samochody)
     {
@@ -13,7 +11,7 @@
                 <div class="caption">
                     <h4 class="pull-right">@samochod.Cena.ToString("c")</h4>
                     <h4>
-                        @samochod.Marka - @samochod.Model - @samochod.RokProdukcji
+                        <a asp-controller="Home" asp-action="Szczegoly" asp-route-id="@samochod.Id">@samochod.Marka</a>- @samochod.Model - @samochod.RokProdukcji
                     </h4>
                     <h5>
                         Przebieg : @samochod.Przebieg

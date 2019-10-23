@@ -4,18 +4,24 @@
     <Files>
       <File FileName="CoreAutomotive/Models/AppDbContext.cs" Line="11" Column="10" />
       <File FileName="CoreAutomotive/Models/DbInitializer.cs" />
-      <File FileName="CoreAutomotive/Models/MockSamochodRepository.cs" />
-      <File FileName="CoreAutomotive/Program.cs" Line="12" Column="25" />
-      <File FileName="CoreAutomotive/Models/Samochod.cs" />
+      <File FileName="CoreAutomotive/Startup.cs" />
+      <File FileName="CoreAutomotive/Views/Home/Szczegoly.cshtml" />
+      <File FileName="CoreAutomotive/Views/Home/Index.cshtml" />
+      <File FileName="CoreAutomotive/Views/Shared/_Layout.cshtml" Line="5" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CoreAutomotive" expanded="True">
             <Node name="CoreAutomotive" expanded="True">
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="appsettings.json" expanded="True" />
-              <Node name="Program.cs" selected="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>

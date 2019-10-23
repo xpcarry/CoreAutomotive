@@ -264,3 +264,5 @@ C:/Users/Albert/source/repos/CoreAutomotive/CoreAutomotive/obj/Debug/netcoreapp3
 /Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/bin/Debug/netcoreapp3.0/runtimes/win-arm64/native/e_sqlite3.dll
 /Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/bin/Debug/netcoreapp3.0/runtimes/win-x64/native/e_sqlite3.dll
 /Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/bin/Debug/netcoreapp3.0/runtimes/win-x86/native/e_sqlite3.dll
+/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/obj/Debug/netcoreapp3.0/Razor/Views/Home/Szczegoly.cshtml.g.cs
+/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/obj/Debug/netcoreapp3.0/Razor/Views/_ViewImports.cshtml.g.cs
