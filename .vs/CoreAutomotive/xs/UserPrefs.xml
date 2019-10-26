@@ -2,12 +2,16 @@
   <MonoDevelop.Ide.ItemProperties.CoreAutomotive PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="CoreAutomotive/Models/AppDbContext.cs" Line="11" Column="10" />
-      <File FileName="CoreAutomotive/Models/DbInitializer.cs" />
-      <File FileName="CoreAutomotive/Startup.cs" />
+      <File FileName="CoreAutomotive/Startup.cs" Line="32" Column="74" />
       <File FileName="CoreAutomotive/Views/Home/Szczegoly.cshtml" />
       <File FileName="CoreAutomotive/Views/Home/Index.cshtml" />
-      <File FileName="CoreAutomotive/Views/Shared/_Layout.cshtml" Line="5" Column="27" />
+      <File FileName="CoreAutomotive/Views/Shared/_Layout.cshtml" />
+      <File FileName="CoreAutomotive/Models/Opinia.cs" />
+      <File FileName="CoreAutomotive/Models/OpiniaRepository.cs" />
+      <File FileName="CoreAutomotive/Models/IOpiniaRepository.cs" />
+      <File FileName="CoreAutomotive/Controllers/OpiniaController.cs" />
+      <File FileName="CoreAutomotive/Views/Opinia/Index.cshtml" />
+      <File FileName="CoreAutomotive/Views/Opinia/OpiniaWyslana.cshtml" Line="6" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,11 +19,9 @@
           <Node name="CoreAutomotive" expanded="True">
             <Node name="CoreAutomotive" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
+                <Node name="Opinia" expanded="True">
+                  <Node name="OpiniaWyslana.cshtml" selected="True" />
                 </Node>
               </Node>
             </Node>

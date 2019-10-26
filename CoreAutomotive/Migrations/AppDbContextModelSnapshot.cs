@@ -15,6 +15,29 @@ namespace CoreAutomotive.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.0.0");
 
+            modelBuilder.Entity("CoreAutomotive.Models.Opinia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NazwaUzytkownika")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("OczekujeOdpowiedzi")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Wiadomosc")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Opinie");
+                });
+
             modelBuilder.Entity("CoreAutomotive.Models.Samochod", b =>
                 {
                     b.Property<int>("Id")

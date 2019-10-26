@@ -29,6 +29,7 @@ namespace CoreAutomotive
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<ISamochodRepository, SamochodRepository>();
+            services.AddTransient<IOpiniaRepository, OpiniaRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
