@@ -27,17 +27,17 @@ namespace CoreAutomotive.Controllers
         [HttpPost]
         public IActionResult Index(Opinia opinia)
         {
-            _opiniaRepository.DodajOpinie(opinia);
 
             if (ModelState.IsValid)
             {
-
+                _opiniaRepository.DodajOpinie(opinia);
+                return RedirectToAction("OpiniaWyslana");
             }
             else
             {
-
+                return View(opinia);
             }
-            return RedirectToAction("OpiniaWyslana");
+
         }
 
         public IActionResult OpiniaWyslana(Opinia opinia)

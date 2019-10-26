@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/CoreAutomotive.csproj": {}
+    "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\CoreAutomotive.csproj": {}
   },
   "projects": {
-    "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/CoreAutomotive.csproj": {
+    "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\CoreAutomotive.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/CoreAutomotive.csproj",
+        "projectUniqueName": "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\CoreAutomotive.csproj",
         "projectName": "CoreAutomotive",
-        "projectPath": "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/CoreAutomotive.csproj",
-        "packagesPath": "/Users/albertbedynski/.nuget/packages/",
-        "outputPath": "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/obj/",
+        "projectPath": "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\CoreAutomotive.csproj",
+        "packagesPath": "C:\\Users\\Albert\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/albertbedynski/.config/NuGet/NuGet.Config"
+          "C:\\Users\\Albert\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -83,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
