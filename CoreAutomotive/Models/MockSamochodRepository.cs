@@ -42,6 +42,19 @@ namespace CoreAutomotive.Models
             return samochody;
         }
 
+        public void AddCar(Samochod samochod)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void EditCar(Samochod samochod)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCar(Samochod samochod)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

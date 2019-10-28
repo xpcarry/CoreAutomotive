@@ -6,6 +6,7 @@ using CoreAutomotive.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +29,8 @@ namespace CoreAutomotive
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<AppDbContext>();
             services.AddTransient<ISamochodRepository, SamochodRepository>();
             services.AddTransient<IOpiniaRepository, OpiniaRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
@@ -39,6 +42,7 @@ namespace CoreAutomotive
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseMvc(
                 routes =>
                 {

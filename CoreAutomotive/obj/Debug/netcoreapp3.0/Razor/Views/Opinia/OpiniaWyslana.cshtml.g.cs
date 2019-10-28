@@ -26,8 +26,15 @@ using CoreAutomotive.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9a0b317507f2858b9babeca0c7b1849518467ac1", @"/Views/Opinia/OpiniaWyslana.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f2e9fd287b6f5964b1879f49803f4beacf3748af", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"871821add31fd1f0f7b0c1494b2a51c85d6f99e8", @"/Views/_ViewImports.cshtml")]
     public class Views_Opinia_OpiniaWyslana : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

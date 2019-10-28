@@ -268,7 +268,6 @@ C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\bin\Debug\netcoreapp3
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\bin\Debug\netcoreapp3.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\staticwebassets\CoreAutomotive.StaticWebAssets.Manifest.cache
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\staticwebassets\CoreAutomotive.StaticWebAssets.xml
-C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.RazorAssemblyInfo.cache
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.RazorAssemblyInfo.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.AssemblyInfoInputs.cache
@@ -290,3 +289,9 @@ C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.dll
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.pdb
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.csprojAssemblyReference.cache
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Car\Index.cshtml.g.cs
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Car\Details.cshtml.g.cs
