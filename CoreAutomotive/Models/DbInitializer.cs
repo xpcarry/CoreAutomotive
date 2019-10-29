@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Identity;
 
 namespace CoreAutomotive.Models
 {
@@ -25,6 +26,12 @@ namespace CoreAutomotive.Models
                 context.SaveChanges();
 
                 //2nd soulution context.AddRange( new Samochod..)
+            }
+
+            if (!context.UserRoles.Any())
+            {
+                
+               
             }
 
         }

@@ -1,30 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\CoreAutomotive.csproj": {}
+    "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/CoreAutomotive.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\CoreAutomotive.csproj": {
+    "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/CoreAutomotive.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\CoreAutomotive.csproj",
+        "projectUniqueName": "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/CoreAutomotive.csproj",
         "projectName": "CoreAutomotive",
-        "projectPath": "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\CoreAutomotive.csproj",
-        "packagesPath": "C:\\Users\\Albert\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Albert\\source\\repos\\CoreAutomotive\\CoreAutomotive\\obj\\",
+        "projectPath": "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/CoreAutomotive.csproj",
+        "packagesPath": "/Users/albertbedynski/.nuget/packages/",
+        "outputPath": "/Users/albertbedynski/Projects/CoreAutomotive/CoreAutomotive/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Albert\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/albertbedynski/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,7 +36,19 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.0.0, )"
             },
@@ -92,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

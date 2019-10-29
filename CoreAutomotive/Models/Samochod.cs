@@ -21,5 +21,6 @@ namespace CoreAutomotive.Models
         public string MiniaturkaUrl { get; set; }
         public bool JestSamochodemTygodnia { get; set; }
         public bool JestWCentrali { get; set; }
+        public bool Approved { get; set; }
     }
 }
