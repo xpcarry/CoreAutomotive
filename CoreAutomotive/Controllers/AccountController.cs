@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CoreAutomotive.Models;
 using CoreAutomotive.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoreAutomotive.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
 
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<UserData> _signInManager;
+        private readonly UserManager<UserData> _userManager;
 
-        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public AccountController(SignInManager<UserData> signInManager, UserManager<UserData> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -27,6 +30,9 @@ namespace CoreAutomotive.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
             if (!ModelState.IsValid) return View(loginVM);
@@ -35,7 +41,7 @@ namespace CoreAutomotive.Controllers
 
             if (user != null)
             {
-                var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                var result = await _signInManager.CheckPasswordSignInAsync(user, loginVM.Password, false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
@@ -50,16 +56,27 @@ namespace CoreAutomotive.Controllers
         // GET: /<controller>/
         public IActionResult Register()
         {
-            return View(new LoginVM());
+            return View(new RegisterVM());
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(LoginVM loginVM)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterVM registerVM)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = loginVM.UserName };
-                var result = await _userManager.CreateAsync(user, loginVM.Password);
+                var user = new UserData()
+                {
+                    Name = registerVM.Name,
+                    Surname = registerVM.Surname,
+                    Email = registerVM.Email,
+                    PhoneNumber = registerVM.PhoneNumber,
+                    City = registerVM.City,
+                    UserName = registerVM.Email,
+                    DateJoined = DateTime.Now
+
+                };
+                var result = await _userManager.CreateAsync(user, registerVM.Password);
 
                 if (result.Succeeded)
                 {
@@ -67,10 +84,11 @@ namespace CoreAutomotive.Controllers
                 }
             }
 
-            return View(loginVM);
+            return View(registerVM);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOut(LoginVM loginVM)
         {
             await _signInManager.SignOutAsync();

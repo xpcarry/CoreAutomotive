@@ -19,8 +19,7 @@ namespace CoreAutomotive.Models
         public decimal Cena { get; set; }
         public string ZdjecieUrl { get; set; }
         public string MiniaturkaUrl { get; set; }
-        public bool JestSamochodemTygodnia { get; set; }
-        public bool JestWCentrali { get; set; }
+        public DateTime DateAdded { get; set; }
         public bool Approved { get; set; }
     }
 }
