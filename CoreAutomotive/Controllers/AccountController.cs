@@ -10,17 +10,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreAutomotive.Controllers
 {
-    [AllowAnonymous]
     public class AccountController : Controller
     {
 
         private readonly SignInManager<UserData> _signInManager;
         private readonly UserManager<UserData> _userManager;
+        private readonly AppDbContext _context;
 
-        public AccountController(SignInManager<UserData> signInManager, UserManager<UserData> userManager)
+        public AccountController(SignInManager<UserData> signInManager, UserManager<UserData> userManager, AppDbContext context)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _context = context;
         }
 
         // GET: /<controller>/
@@ -30,9 +31,6 @@ namespace CoreAutomotive.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        [Authorize]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
             if (!ModelState.IsValid) return View(loginVM);
@@ -41,7 +39,7 @@ namespace CoreAutomotive.Controllers
 
             if (user != null)
             {
-                var result = await _signInManager.CheckPasswordSignInAsync(user, loginVM.Password, false);
+                var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
@@ -93,6 +91,22 @@ namespace CoreAutomotive.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        private Task<UserData> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        public async Task<IActionResult> ViewCars()
+        {
+            //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var user = await GetCurrentUserAsync();
+            var userId = user.Id;
+            var a = _context.Samochody.Where(c => c.UserId == userId).ToList();
+
+            var vm = new MyCarsVM()
+            {
+                MyCars = a
+            };
+
+            return View(vm);
         }
     }
 

@@ -21,5 +21,6 @@ namespace CoreAutomotive.Models
         public string MiniaturkaUrl { get; set; }
         public DateTime DateAdded { get; set; }
         public bool Approved { get; set; }
+        public int UserId { get; set; }
     }
 }

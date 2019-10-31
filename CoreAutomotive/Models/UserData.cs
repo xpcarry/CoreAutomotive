@@ -12,8 +12,8 @@ namespace CoreAutomotive.Models
         public string Surname { get; set; }
         public string City { get; set; }
         public DateTime DateJoined { get; set; }
-        public ICollection<Samochod> Cars { get; set; }
-        public ICollection<UserRole> UserRoles { get; set; }
+        //public List<Samochod> Cars { get; set; }
+
 
     }
 }

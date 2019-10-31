@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreAutomotive.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191030191025_Initial")]
-    partial class Initial
+    [Migration("20191031012712_UserId")]
+    partial class UserId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -114,15 +114,13 @@ namespace CoreAutomotive.Migrations
                     b.Property<int>("RokProdukcji")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UserDataId")
+                    b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ZdjecieUrl")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserDataId");
 
                     b.ToTable("Samochody");
                 });
@@ -204,21 +202,6 @@ namespace CoreAutomotive.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("CoreAutomotive.Models.UserRole", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -284,6 +267,21 @@ namespace CoreAutomotive.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
                     b.Property<int>("UserId")
@@ -301,28 +299,6 @@ namespace CoreAutomotive.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CoreAutomotive.Models.Samochod", b =>
-                {
-                    b.HasOne("CoreAutomotive.Models.UserData", null)
-                        .WithMany("Cars")
-                        .HasForeignKey("UserDataId");
-                });
-
-            modelBuilder.Entity("CoreAutomotive.Models.UserRole", b =>
-                {
-                    b.HasOne("CoreAutomotive.Models.Role", "Role")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CoreAutomotive.Models.UserData", "User")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -345,6 +321,21 @@ namespace CoreAutomotive.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
+                    b.HasOne("CoreAutomotive.Models.UserData", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
+                {
+                    b.HasOne("CoreAutomotive.Models.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("CoreAutomotive.Models.UserData", null)
                         .WithMany()
                         .HasForeignKey("UserId")

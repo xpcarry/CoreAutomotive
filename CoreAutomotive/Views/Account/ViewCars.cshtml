@@ -1,0 +1,27 @@
+﻿@model MyCarsVM
+
+@foreach (var samochod in Model.MyCars)
+{
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" src="@samochod.MiniaturkaUrl" alt="" />
+            <div class="card-body">
+                <h4>@samochod.Cena.ToString("c")</h4>
+                <h5>Przebieg : @samochod.Przebieg</h5>
+                <h5>Pojemnosc : @samochod.Pojemnosc</h5>
+                <h5>Moc : @samochod.Moc</h5>
+                <p id="description" class="card-text">@samochod.Opis</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <form method="post">
+                        <div class="btn-group">
+                            <button asp-controller="Home" asp-action="Szczegoly" asp-route-id="@samochod.Id" class="btn btn-sm btn-outline-secondary">View</button>
+                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </div>
+                    </form>
+                    <small class="text-muted">9 mins</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

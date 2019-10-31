@@ -13,10 +13,10 @@ namespace CoreAutomotive.Controllers
     public class CarController : Controller
     {
 
-        private readonly ISamochodRepository _samochodRepository;
+        private readonly ICarRepository _samochodRepository;
         private IWebHostEnvironment _env;
 
-        public CarController(ISamochodRepository samochodRepository, IWebHostEnvironment env)
+        public CarController(ICarRepository samochodRepository, IWebHostEnvironment env)
         {
             _samochodRepository = samochodRepository;
             _env = env;

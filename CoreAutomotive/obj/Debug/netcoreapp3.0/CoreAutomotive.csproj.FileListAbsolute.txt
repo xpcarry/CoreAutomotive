@@ -320,4 +320,5 @@ C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.csprojAssemblyReference.cache
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_IndexLayout.cshtml.g.cs
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout111.cshtml.g.cs
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Account\ViewCars.cshtml.g.cs

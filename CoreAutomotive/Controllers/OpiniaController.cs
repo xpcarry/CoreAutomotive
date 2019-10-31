@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreAutomotive.Controllers
 {
-    [Authorize]
     public class OpiniaController : Controller
     {
         private readonly IOpiniaRepository _opiniaRepository;

@@ -13,28 +13,28 @@ namespace CoreAutomotive.Views
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
-#line 3 "C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\Views\_ViewImports.cshtml"
+#line 1 "C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\Views\_ViewImports.cshtml"
 using Microsoft.AspNetCore.Identity;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\Views\_ViewImports.cshtml"
+#line 2 "C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\Views\_ViewImports.cshtml"
 using CoreAutomotive.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\Views\_ViewImports.cshtml"
+#line 3 "C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\Views\_ViewImports.cshtml"
 using CoreAutomotive.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9ad91709cdf276c200bb9a2266bc8691c894368d", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d8c40a9f754edd83a74450b445cc4b0cec27041e", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
@@ -50,10 +50,6 @@ using CoreAutomotive.Models;
 #nullable disable
         }
         #pragma warning restore 1998
-        [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public UserManager<UserData> UserManager { get; private set; }
-        [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public SignInManager<UserData> SignInManager { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoreAutomotive.Migrations
 {
-    public partial class Initial : Migration
+    public partial class UserId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,6 +66,32 @@ namespace CoreAutomotive.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Opinie", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Samochody",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Marka = table.Column<string>(nullable: true),
+                    Model = table.Column<string>(nullable: true),
+                    RokProdukcji = table.Column<int>(nullable: false),
+                    Przebieg = table.Column<string>(nullable: true),
+                    Pojemnosc = table.Column<string>(nullable: true),
+                    RodzajPaliwa = table.Column<string>(nullable: true),
+                    Moc = table.Column<string>(nullable: true),
+                    Opis = table.Column<string>(nullable: true),
+                    Cena = table.Column<decimal>(nullable: false),
+                    ZdjecieUrl = table.Column<string>(nullable: true),
+                    MiniaturkaUrl = table.Column<string>(nullable: true),
+                    DateAdded = table.Column<DateTime>(nullable: false),
+                    Approved = table.Column<bool>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Samochody", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -174,38 +200,6 @@ namespace CoreAutomotive.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Samochody",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Marka = table.Column<string>(nullable: true),
-                    Model = table.Column<string>(nullable: true),
-                    RokProdukcji = table.Column<int>(nullable: false),
-                    Przebieg = table.Column<string>(nullable: true),
-                    Pojemnosc = table.Column<string>(nullable: true),
-                    RodzajPaliwa = table.Column<string>(nullable: true),
-                    Moc = table.Column<string>(nullable: true),
-                    Opis = table.Column<string>(nullable: true),
-                    Cena = table.Column<decimal>(nullable: false),
-                    ZdjecieUrl = table.Column<string>(nullable: true),
-                    MiniaturkaUrl = table.Column<string>(nullable: true),
-                    DateAdded = table.Column<DateTime>(nullable: false),
-                    Approved = table.Column<bool>(nullable: false),
-                    UserDataId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Samochody", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Samochody_AspNetUsers_UserDataId",
-                        column: x => x.UserDataId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -242,11 +236,6 @@ namespace CoreAutomotive.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Samochody_UserDataId",
-                table: "Samochody",
-                column: "UserDataId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace CoreAutomotive.Models
 {
-    public class SamochodRepository : ISamochodRepository
+    public class CarRepository : ICarRepository
     {
 
         private readonly AppDbContext _appDbContext;
 
-        public SamochodRepository(AppDbContext appDbContext)
+        public CarRepository(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }

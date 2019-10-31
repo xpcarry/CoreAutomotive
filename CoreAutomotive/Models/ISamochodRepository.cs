@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CoreAutomotive.Models
 {
-    public interface ISamochodRepository
+    public interface ICarRepository
     {
         IEnumerable<Samochod> PobierzWszystkieSamochody();
         Samochod PobierzSamochodOId(int samochodId);

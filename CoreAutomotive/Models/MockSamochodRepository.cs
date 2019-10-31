@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CoreAutomotive.Models
 {
-    public class MockSamochodRepository : ISamochodRepository
+    public class MockSamochodRepository : ICarRepository
     {
 
         private List<Samochod> samochody;
