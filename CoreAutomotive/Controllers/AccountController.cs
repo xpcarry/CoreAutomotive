@@ -99,7 +99,7 @@ namespace CoreAutomotive.Controllers
             //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             var user = await GetCurrentUserAsync();
             var userId = user.Id;
-            var a = _context.Samochody.Where(c => c.UserId == userId).ToList();
+            var a = _context.Cars.Where(c => c.UserId == userId).ToList();
 
             var vm = new MyCarsVM()
             {

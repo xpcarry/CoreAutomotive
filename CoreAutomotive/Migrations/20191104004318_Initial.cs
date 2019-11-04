@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoreAutomotive.Migrations
 {
-    public partial class UserId : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,6 +53,32 @@ namespace CoreAutomotive.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cars",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Brand = table.Column<string>(nullable: true),
+                    Model = table.Column<string>(nullable: true),
+                    ProductionYear = table.Column<int>(nullable: false),
+                    Mileage = table.Column<string>(nullable: true),
+                    Engine = table.Column<string>(nullable: true),
+                    FuelType = table.Column<string>(nullable: true),
+                    Power = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Price = table.Column<decimal>(nullable: false),
+                    PictureUrl = table.Column<string>(nullable: true),
+                    ThumbnailUrl = table.Column<string>(nullable: true),
+                    DateAdded = table.Column<DateTime>(nullable: false),
+                    Approved = table.Column<bool>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cars", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Opinie",
                 columns: table => new
                 {
@@ -66,32 +92,6 @@ namespace CoreAutomotive.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Opinie", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Samochody",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Marka = table.Column<string>(nullable: true),
-                    Model = table.Column<string>(nullable: true),
-                    RokProdukcji = table.Column<int>(nullable: false),
-                    Przebieg = table.Column<string>(nullable: true),
-                    Pojemnosc = table.Column<string>(nullable: true),
-                    RodzajPaliwa = table.Column<string>(nullable: true),
-                    Moc = table.Column<string>(nullable: true),
-                    Opis = table.Column<string>(nullable: true),
-                    Cena = table.Column<decimal>(nullable: false),
-                    ZdjecieUrl = table.Column<string>(nullable: true),
-                    MiniaturkaUrl = table.Column<string>(nullable: true),
-                    DateAdded = table.Column<DateTime>(nullable: false),
-                    Approved = table.Column<bool>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Samochody", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -256,10 +256,10 @@ namespace CoreAutomotive.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Opinie");
+                name: "Cars");
 
             migrationBuilder.DropTable(
-                name: "Samochody");
+                name: "Opinie");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

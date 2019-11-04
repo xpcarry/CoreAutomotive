@@ -12,24 +12,24 @@ namespace CoreAutomotive.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICarRepository _samochodRepository;
+        private readonly ICarRepository _CarRepository;
 
-        public HomeController(ICarRepository samochodRepository)
+        public HomeController(ICarRepository CarRepository)
         {
-            //_samochodRepository = new MockSamochodRepository();
-            //services.AddTransit, mocksamochodrepository (wskrzykniecie konstruktora)
-            _samochodRepository = samochodRepository;
+            //_CarRepository = new PowerkCarRepository();
+            //services.AddTransit, PowerkCarrepository (wskrzykniecie konstruktora)
+            _CarRepository = CarRepository;
 
         }
 
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var samochody = _samochodRepository.PobierzWszystkieSamochody().OrderBy(s => s.Marka);
+            var Cars = _CarRepository.GetAllCars().OrderBy(s => s.Brand);
             var homeVM = new HomeVM()
             {
-                Tytul = "Przeglad samochodów",
-                Samochody = samochody.ToList()
+                Tytul = "Cars Overview",
+                Cars = Cars.ToList()
 
             };
 
@@ -38,10 +38,10 @@ namespace CoreAutomotive.Controllers
 
         public IActionResult Szczegoly(int id)
         {
-            var samochod = _samochodRepository.PobierzSamochodOId(id);
+            var Car = _CarRepository.GetCarById(id);
 
-            if (samochod == null) return NotFound();
-            return View(samochod);
+            if (Car == null) return NotFound();
+            return View(Car);
         }
     }
 }

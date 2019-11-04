@@ -1,19 +1,19 @@
-﻿@model IEnumerable<Samochod>
+﻿@model IEnumerable<Car>
 
 
 <div class="container-fluid">
     <table class="table" style="background-color:azure">
         <thead>
             <tr>
-                <th>Marka</th>
+                <th>Brand</th>
                 <th>Model</th>
                 <th>Rok</th>
-                <th>Przebieg</th>
-                <th>Pojemnosc</th>
+                <th>Mileage</th>
+                <th>Engine</th>
                 <th>Paliwo</th>
-                <th>Moc</th>
-                <th>Opis</th>
-                <th>Cena</th>
+                <th>Power</th>
+                <th>Description</th>
+                <th>Price</th>
                 <th>Miniaturka</th>
                 <th>
                     <a asp-action="Create" class="btn btn-danger btn-sm">Dodaj nowy</a>
@@ -24,16 +24,16 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Marka)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Brand)</td>
                     <td>@Html.DisplayFor(modelItem => item.Model)</td>
-                    <td>@Html.DisplayFor(modelItem => item.RokProdukcji)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Przebieg)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Pojemnosc)</td>
-                    <td>@Html.DisplayFor(modelItem => item.RodzajPaliwa)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Moc)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Opis)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Cena)</td>
-                    <td><img src="@item.MiniaturkaUrl" height="100" width="100" /></td>
+                    <td>@Html.DisplayFor(modelItem => item.ProductionYear)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Mileage)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Engine)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FuelType)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Power)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td><img src="@item.ThumbnailUrl" height="100" width="100" /></td>
                     <td>
                         <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success btn-sm" style="margin-bottom:3px">Szczegóły</a>
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm" style="margin-bottom:3px">Edytuj</a>

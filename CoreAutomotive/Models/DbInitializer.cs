@@ -54,22 +54,22 @@ namespace CoreAutomotive.Models
         public static void Seed(AppDbContext context)
         {
 
-            if (!context.Samochody.Any())
+            if (!context.Cars.Any())
             {
-                var samochody = new List<Samochod>
+                var cars = new List<Car>
                 {
 
-                new Samochod { Id=1, UserId = 1, DateAdded = DateTime.Now, Marka="Ford", Model="Mustang", RokProdukcji = 2016, Przebieg = "34 000 km", Pojemnosc = "4 900 cm3", RodzajPaliwa= "benzyna", Moc = "421 KM", Opis="Mam do sprzedania Mustanga 5.0 GT V8 421KM. Kupiony w Polskim SALONIE FORDA w Opolu jako NOWY w kwietniu 2016", Cena = 160000M, ZdjecieUrl="/images/fordMustang.jpg", MiniaturkaUrl="/images/fordMustang.jpg"},
-                new Samochod { Id=2, UserId = 1, DateAdded = DateTime.Now, Marka="Audi", Model="S5", RokProdukcji = 2013, Przebieg = "112 000 km", Pojemnosc = "3 000 cm3", RodzajPaliwa= "benzyna", Moc = "280 KM", Opis="Do sprzedania Audi S5 z 2013 roku. Jestem właścicielem tego samochodu od ponad dwóch lat.", Cena = 115000M, ZdjecieUrl="/images/audiS5.jpg", MiniaturkaUrl="/images/audiS5.jpg"},
-                new Samochod { Id=3, UserId = 1, DateAdded = DateTime.Now, Marka="BMV", Model="X4", RokProdukcji = 2017, Przebieg = "4 300 km", Pojemnosc = "1 995 cm3", RodzajPaliwa= "benzyna", Moc = "190 KM", Opis="BMV X4 20d xDrive. Samochód krajowy. Samochód serwisowany. Wystawiamy fakturę VAT 23%. Samochód bezwypadkowy. I właściciel.", Cena = 194000M, ZdjecieUrl="/images/bmvx4.jpg", MiniaturkaUrl="/images/bmvx4.jpg"},
-                new Samochod { Id=4, UserId = 1, DateAdded = DateTime.Now, Marka="Chevrolet", Model="Corvette", RokProdukcji = 1972, Przebieg = "28 000 km", Pojemnosc = "5 700 cm3", RodzajPaliwa= "benzyna", Moc = "300 KM", Opis="Corvetta jest w świetnym stanie wizualnym i mechanicznym. Oczywiście jest ZAREJESTROWANA i ubezpieczona w PL.", Cena = 90000M, ZdjecieUrl="/images/chevroletCorvete.jpg", MiniaturkaUrl="/images/chevroletCorvete.jpg"},
-                new Samochod { Id=5, UserId = 2, DateAdded = DateTime.Now, Marka="Nissan", Model="Skyline", RokProdukcji = 1995, Przebieg = "144 000 km", Pojemnosc = "2 500 cm3", RodzajPaliwa= "benzyna", Moc = "410 KM", Opis="Na sprzedaż trafia moja perełka Nissan Skyline R33.Auto z Japonii sprowadzone do Szwecji, gdzie było przez wiele lat modyfikowane, uczestniczyło w zlotach, zdobywało nagrody, samochód sponsorowany latami przez Sonax Sweden.", Cena = 120000M, ZdjecieUrl="/images/nissan.jpg", MiniaturkaUrl="/images/nissan.jpg"},
+                new Car { Id=1, UserId = 1, DateAdded = DateTime.Now, Brand="Ford", Model="Mustang", ProductionYear = 2016, Mileage = "34 000 km", Engine = "4 900 cm3", FuelType= "benzyna", Power = "421 KM", Description="Mam do sprzedania Mustanga 5.0 GT V8 421KM. Kupiony w Polskim SALONIE FORDA w Opolu jako NOWY w kwietniu 2016", Price = 160000M, PictureUrl="/images/fordMustang.jpg", ThumbnailUrl="/images/fordMustang.jpg"},
+                new Car { Id=2, UserId = 1, DateAdded = DateTime.Now, Brand="Audi", Model="S5", ProductionYear = 2013, Mileage = "112 000 km", Engine = "3 000 cm3", FuelType= "benzyna", Power = "280 KM", Description="Do sprzedania Audi S5 z 2013 roku. Jestem właścicielem tego Caru od ponad dwóch lat.", Price = 115000M, PictureUrl="/images/audiS5.jpg", ThumbnailUrl="/images/audiS5.jpg"},
+                new Car { Id=3, UserId = 1, DateAdded = DateTime.Now, Brand="BMV", Model="X4", ProductionYear = 2017, Mileage = "4 300 km", Engine = "1 995 cm3", FuelType= "benzyna", Power = "190 KM", Description="BMV X4 20d xDrive. SaPowerhód krajowy. SaPowerhód serwisowany. Wystawiamy fakturę VAT 23%. SaPowerhód bezwypadkowy. I właściciel.", Price = 194000M, PictureUrl="/images/bmvx4.jpg", ThumbnailUrl="/images/bmvx4.jpg"},
+                new Car { Id=4, UserId = 1, DateAdded = DateTime.Now, Brand="Chevrolet", Model="Corvette", ProductionYear = 1972, Mileage = "28 000 km", Engine = "5 700 cm3", FuelType= "benzyna", Power = "300 KM", Description="Corvetta jest w świetnym stanie wizualnym i mechanicznym. Oczywiście jest ZAREJESTROWANA i ubezpieczona w PL.", Price = 90000M, PictureUrl="/images/chevroletCorvete.jpg", ThumbnailUrl="/images/chevroletCorvete.jpg"},
+                new Car { Id=5, UserId = 2, DateAdded = DateTime.Now, Brand="Nissan", Model="Skyline", ProductionYear = 1995, Mileage = "144 000 km", Engine = "2 500 cm3", FuelType= "benzyna", Power = "410 KM", Description="Na sprzedaż trafia moja perełka Nissan Skyline R33.Auto z Japonii sprowadzone do Szwecji, gdzie było przez wiele lat modyfikowane, uczestniczyło w zlotach, zdobywało nagrody, saPowerhód sponsorowany latami przez Sonax Sweden.", Price = 120000M, PictureUrl="/images/nissan.jpg", ThumbnailUrl="/images/nissan.jpg"},
 
                 };
-                samochody.ForEach(s => context.Samochody.Add(s));
+                cars.ForEach(s => context.Cars.Add(s));
                 context.SaveChanges();
 
-                //2nd soulution context.AddRange( new Samochod..)
+                //2nd soulution context.AddRange( new Car..)
             }
 
 

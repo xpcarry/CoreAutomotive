@@ -8,6 +8,6 @@ namespace CoreAutomotive.ViewModels
 {
     public class MyCarsVM
     {
-        public IEnumerable<Samochod> MyCars { get; set; }
+        public IEnumerable<Car> MyCars { get; set; }
     }
 }

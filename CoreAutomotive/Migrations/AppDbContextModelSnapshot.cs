@@ -16,6 +16,59 @@ namespace CoreAutomotive.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.0.0");
 
+            modelBuilder.Entity("CoreAutomotive.Models.Car", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Approved")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Brand")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Engine")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FuelType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Mileage")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Model")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Power")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProductionYear")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ThumbnailUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cars");
+                });
+
             modelBuilder.Entity("CoreAutomotive.Models.Opinia", b =>
                 {
                     b.Property<int>("Id")
@@ -68,59 +121,6 @@ namespace CoreAutomotive.Migrations
                         .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
-                });
-
-            modelBuilder.Entity("CoreAutomotive.Models.Samochod", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Approved")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("Cena")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Marka")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MiniaturkaUrl")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Moc")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Model")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Opis")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Pojemnosc")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Przebieg")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RodzajPaliwa")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("RokProdukcji")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ZdjecieUrl")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Samochody");
                 });
 
             modelBuilder.Entity("CoreAutomotive.Models.UserData", b =>

@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20191031182808_Initial.cs" />
+    <Compile Remove="Migrations\20191031182808_Initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\images\pattern.png" />
   </ItemGroup>
 

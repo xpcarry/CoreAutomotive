@@ -13,29 +13,29 @@ namespace CoreAutomotive.Controllers
     public class CarController : Controller
     {
 
-        private readonly ICarRepository _samochodRepository;
+        private readonly ICarRepository _CarRepository;
         private IWebHostEnvironment _env;
 
-        public CarController(ICarRepository samochodRepository, IWebHostEnvironment env)
+        public CarController(ICarRepository CarRepository, IWebHostEnvironment env)
         {
-            _samochodRepository = samochodRepository;
+            _CarRepository = CarRepository;
             _env = env;
         }
 
         public IActionResult Index()
         {
-            var samochody = _samochodRepository.PobierzWszystkieSamochody();
-            return View(samochody);
+            var Cars = _CarRepository.GetAllCars();
+            return View(Cars);
         }
 
         public IActionResult Details(int id)
         {
-            var samochod = _samochodRepository.PobierzSamochodOId(id);
-            if (samochod == null)
+            var Car = _CarRepository.GetCarById(id);
+            if (Car == null)
             {
                 return NotFound();
             }
-            return View(samochod);
+            return View(Car);
         }
 
         public IActionResult Create(string FileName)
@@ -48,78 +48,78 @@ namespace CoreAutomotive.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Samochod samochod)
+        public IActionResult Create(Car Car)
         {
             if (ModelState.IsValid)
             {
-                _samochodRepository.AddCar(samochod);
+                _CarRepository.AddCar(Car);
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(samochod);
+            return View(Car);
         }
 
         public IActionResult Edit(int id, string FileName)
         {
-            var samochod = _samochodRepository.PobierzSamochodOId(id);
+            var Car = _CarRepository.GetCarById(id);
 
-            if (samochod==null)
+            if (Car==null)
             {
                 return NotFound();
             }
 
             if (!string.IsNullOrEmpty(FileName))
                 ViewBag.ImgPath = "/Images/" + FileName;
-            else ViewBag.ImgPath = samochod.ZdjecieUrl;
+            else ViewBag.ImgPath = Car.PictureUrl;
 
-            return View(samochod);
+            return View(Car);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Samochod samochod)
+        public IActionResult Edit(Car Car)
         {
             if (ModelState.IsValid)
             {
-                _samochodRepository.EditCar(samochod);
+                _CarRepository.EditCar(Car);
                 return RedirectToAction(nameof(Index));
             }
-            return View(samochod);
+            return View(Car);
         }
 
 
         public IActionResult Delete(int id)
         {
-            var samochod = _samochodRepository.PobierzSamochodOId(id);
+            var Car = _CarRepository.GetCarById(id);
 
-            if (samochod == null)
+            if (Car == null)
             {
                 return NotFound();
             }
 
-            return View(samochod);
+            return View(Car);
         }
 
 
         //Doweryfikacji
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(Samochod samochod, string ZdjecieUrl)
+        public IActionResult Delete(Car Car, string PictureUrl)
         {
             if (ModelState.IsValid)
             {
-                _samochodRepository.DeleteCar(samochod);
+                _CarRepository.DeleteCar(Car);
 
                 //delete picture
-                if (ZdjecieUrl != null)
+                if (PictureUrl != null)
                 {
                     var webRoot = _env.WebRootPath;
-                    var filePath = Path.Combine(webRoot.ToString() + ZdjecieUrl);
+                    var filePath = Path.Combine(webRoot.ToString() + PictureUrl);
                     System.IO.File.Delete(filePath);
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(samochod);
+            return View(Car);
         }
 
         [HttpPost]

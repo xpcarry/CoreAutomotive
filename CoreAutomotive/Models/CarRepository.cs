@@ -14,32 +14,32 @@ namespace CoreAutomotive.Models
             _appDbContext = appDbContext;
         }
 
-        public Samochod PobierzSamochodOId(int samochodId)
+        public Car GetCarById(int CarId)
         {
-            return _appDbContext.Samochody.FirstOrDefault(s => s.Id == samochodId);
+            return _appDbContext.Cars.FirstOrDefault(s => s.Id == CarId);
                 
         }
 
-        public IEnumerable<Samochod> PobierzWszystkieSamochody()
+        public IEnumerable<Car> GetAllCars()
         {
-            return _appDbContext.Samochody;
+            return _appDbContext.Cars;
         }
 
-        public void AddCar(Samochod samochod)
+        public void AddCar(Car Car)
         {
-            _appDbContext.Samochody.Add(samochod);
+            _appDbContext.Cars.Add(Car);
             _appDbContext.SaveChanges();
         }
 
-        public void DeleteCar(Samochod samochod)
+        public void DeleteCar(Car Car)
         {
-            _appDbContext.Samochody.Remove(samochod);
+            _appDbContext.Cars.Remove(Car);
             _appDbContext.SaveChanges();
         }
 
-        public void EditCar(Samochod samochod)
+        public void EditCar(Car Car)
         {
-            _appDbContext.Samochody.Update(samochod);
+            _appDbContext.Cars.Update(Car);
             _appDbContext.SaveChanges();
         }
     }
