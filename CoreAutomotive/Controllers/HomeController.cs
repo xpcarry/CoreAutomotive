@@ -36,7 +36,7 @@ namespace CoreAutomotive.Controllers
             return View(homeVM);
         }
 
-        public IActionResult Szczegoly(int id)
+        public IActionResult Details(int id)
         {
             var Car = _CarRepository.GetCarById(id);
 

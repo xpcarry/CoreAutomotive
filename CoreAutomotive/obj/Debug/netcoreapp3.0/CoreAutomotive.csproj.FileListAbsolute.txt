@@ -305,7 +305,6 @@ C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Car\Edit.cshtml.g.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Car\Index.cshtml.g.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Home\Szczegoly.cshtml.g.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Opinia\Index.cshtml.g.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Opinia\OpiniaWyslana.cshtml.g.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -318,7 +317,7 @@ C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.dll
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.pdb
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.csprojAssemblyReference.cache
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Account\ViewCars.cshtml.g.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\CoreAutomotive.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Shared\_Layout111.cshtml.g.cs
-C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Account\ViewCars.cshtml.g.cs
+C:\Users\Albert\source\repos\CoreAutomotive\CoreAutomotive\obj\Debug\netcoreapp3.0\Razor\Views\Home\Details.cshtml.g.cs

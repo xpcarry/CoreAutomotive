@@ -6,21 +6,22 @@
             <div class="col-md-6">
                 <img alt="@Model.Brand" src="@Model.PictureUrl" height="500" width="500" />
             </div>
-            <div class="col-md-3">
-                <h3>@Model.Brand - @Model.Model</h3>
-                <h4>@Model.Price</h4>
-                <h4>@Model.ProductionYear</h4>
-                <h4>@Model.Mileage</h4>
-                <h4>@Model.Engine</h4>
-                <h4>@Model.Power</h4>
-                <p>@Model.Description</p>
-            </div>
-            <div class="col-md-3" style="padding-right:50px">
-                <h3 class="pull-right">
-                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Edycja</a>
-                    <a asp-action="Index" class="btn btn-success">Powrót</a>
-                </h3>
-            </div>
+        </div>
+        <div class="col-md-3">
+            <h3>@Model.Brand - @Model.Model</h3>
+            <h4>@Model.Price PLN</h4>
+            <h4>Year of production: @Model.ProductionYear</h4>
+            <h4>Mileage: @Model.Mileage</h4>
+            <h4>Engine: @Model.Engine</h4>
+            <h4>Power: @Model.Power HP</h4>
+            <p>Date added: @Model.DateAdded</p>
+            <p>Description: @Model.Description</p>
+        </div>
+        <div class="col-md-3" style="padding-right:50px">
+            <h3 class="pull-right">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Edycja</a>
+                <a asp-action="Index" class="btn btn-success">Powrót</a>
+            </h3>
         </div>
     </div>
 </div>

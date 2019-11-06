@@ -22,5 +22,6 @@ namespace CoreAutomotive.Models
         public DateTime DateAdded { get; set; }
         public bool Approved { get; set; }
         public int UserId { get; set; }
+        public string UserName { get; set; }
     }
 }

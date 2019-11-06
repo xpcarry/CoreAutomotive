@@ -7,6 +7,7 @@ using CoreAutomotive.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoreAutomotive.Controllers
 {
@@ -107,6 +108,26 @@ namespace CoreAutomotive.Controllers
             };
 
             return View(vm);
+        }
+
+        public async Task<IActionResult> ViewProfile(int? id)
+        {
+            if (id == null)
+            {
+                NotFound();
+            }
+
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+            var model = new ViewProfile()
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                DateJoined = user.DateJoined,
+                UserCars = _context.Cars.Where(c => c.UserId == user.Id).ToList()
+            };
+
+            return View(model);
         }
     }
 

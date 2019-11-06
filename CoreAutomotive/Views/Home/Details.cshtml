@@ -1,0 +1,22 @@
+﻿@model Car
+
+<div class="container">
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-md-6">
+                <img alt="@Model.Brand" src="@Model.PictureUrl" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>@Model.Brand - @Model.Model</h3>
+            <h4>@Model.Price PLN</h4>
+            <h4>Year of production: @Model.ProductionYear</h4>
+            <h4>Mileage: @Model.Mileage</h4>
+            <h4>Engine: @Model.Engine</h4>
+            <h4>Power: @Model.Power HP</h4>
+            <p>Date added: @Model.DateAdded</p>
+            <a asp-action="ViewProfile" asp-controller="Account" asp-route-id="@Model.UserId">Created by: @Model.UserName</a>
+            <p>Description: @Model.Description</p>
+        </div>
+    </div>
+</div>
