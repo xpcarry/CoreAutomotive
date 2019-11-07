@@ -24,11 +24,15 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <form method="post">
                                     <div class="btn-group">
-                                        <button asp-controller="Car" asp-action="Home" asp-route-id="@Car.Id" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <button asp-controller="Home" asp-action="Details" asp-route-id="@Car.Id" class="btn btn-sm btn-outline-secondary">View</button>
                                         <button class="btn btn-sm btn-outline-secondary">Edit</button>
                                     </div>
                                 </form>
-                                <small class="text-muted">9 mins</small>
+                                <div class="">
+                                    <a class="pr-xs-2 text-muted small" asp-action="ViewProfile" asp-controller="Account" asp-route-id="@Car.UserId">@Car.UserName </a>
+                                    <div class="pr-xs-3 text-muted small"> @Car.DateAdded.Date.ToShortDateString()</div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -10,6 +10,8 @@ namespace CoreAutomotive.ViewModels
     {
         public string Tytul { get; set; }
         public List<Car> Cars { get; set; }
+        public string UserName { get; set; }
+        public DateTime DateAdded { get; set; }
 
     }
 }

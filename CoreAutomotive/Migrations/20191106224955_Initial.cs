@@ -71,7 +71,8 @@ namespace CoreAutomotive.Migrations
                     ThumbnailUrl = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     Approved = table.Column<bool>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    UserId = table.Column<int>(nullable: false),
+                    UserName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

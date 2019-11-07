@@ -30,7 +30,7 @@ namespace CoreAutomotive.Controllers
             {
                 Tytul = "Cars Overview",
                 Cars = Cars.ToList()
-
+                
             };
 
             return View(homeVM);

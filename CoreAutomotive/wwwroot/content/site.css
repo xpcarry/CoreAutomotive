@@ -34,3 +34,7 @@
 .jumbotron .container {
     max-width: 40rem;
 }
+
+span.tab-space {
+    padding-left: 5em;
+}
