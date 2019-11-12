@@ -15,7 +15,7 @@
             <h4>Engine: @Model.Engine</h4>
             <h4>Power: @Model.Power HP</h4>
             <p>Date added: @Model.DateAdded</p>
-            <a asp-action="ViewProfile" asp-controller="Account" asp-route-id="@Model.UserId">Created by: @Model.UserName</a>
+            <p>Created by: <a asp-action="ViewProfile" asp-controller="Account" asp-route-id="@Model.UserId">@Model.UserName</a></p>
             <p>Description: @Model.Description</p>
         </div>
     </div>

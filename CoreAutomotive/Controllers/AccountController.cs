@@ -95,16 +95,22 @@ namespace CoreAutomotive.Controllers
         }
 
         private Task<UserData> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
-        public async Task<IActionResult> ViewCars()
+        public async Task<IActionResult> MyProfile()
         {
             //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             var user = await GetCurrentUserAsync();
             var userId = user.Id;
-            var a = _context.Cars.Where(c => c.UserId == userId).ToList();
+            var myCars = _context.Cars.Where(c => c.UserId == userId).ToList();
 
-            var vm = new MyCarsVM()
+            var vm = new MyProfileVM()
             {
-                MyCars = a
+                UserName = user.UserName,
+                Email = user.Email,
+                Name = user.Name,
+                Surname = user.Surname,
+                City = user.City,
+                DateJoined = user.DateJoined,
+                MyCars = myCars
             };
 
             return View(vm);
