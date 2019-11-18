@@ -38,3 +38,18 @@
 span.tab-space {
     padding-left: 5em;
 }
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table > thead > tr {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.carousel-inner > .item > img {
+    margin: auto;
+    width: 100%
+}

@@ -21,13 +21,19 @@
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a asp-controller="Opinia" asp-action="Index" class="nav-link">Opinie</a>
+                        <a asp-controller="Opinia" asp-action="Index" class="nav-link">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Car" asp-action="Create" class="nav-link">New Announcement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="" asp-action="" class="nav-link">About</a>
                     </li>
                 </ul>
 
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div class="dropdown offset-md-10">
+                    <div class="dropdown offset-md-7">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @User.Identity.Name
                         </button>
@@ -44,7 +50,7 @@
                 }
                 else
                 {
-                    <div class="offset-md-9">
+                    <div class="offset-md-6">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a id="loginLink" asp-controller="Account" asp-action="Login" class="nav-link">Log in</a>
