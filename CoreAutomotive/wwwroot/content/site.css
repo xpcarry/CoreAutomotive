@@ -53,3 +53,11 @@ span.tab-space {
     margin: auto;
     width: 100%
 }
+
+.carousel .img-responsive {
+    width: 100%;
+}
+
+.cardetails{
+    font-family: 'Open Sans', sans-serif;
+}

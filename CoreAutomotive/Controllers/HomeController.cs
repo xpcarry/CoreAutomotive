@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using CoreAutomotive.Models;
 using CoreAutomotive.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -57,9 +54,26 @@ namespace CoreAutomotive.Controllers
                 DateJoined = user.DateJoined
 
             };
-
-
             return View(vm);
+        }
+
+        public async Task<IActionResult> Contact(string _toUserName)
+        {
+            var fromUser = await _userManager.GetUserAsync(HttpContext.User);
+
+            var vm = new ContactVM
+            {
+                fromUserName = fromUser.UserName,
+                toUserName = _toUserName
+            };
+            return View();
+        }
+
+       [HttpPost]
+       public async Task<IActionResult> Contact()
+        {
+
+            return View();
         }
     }
 }
