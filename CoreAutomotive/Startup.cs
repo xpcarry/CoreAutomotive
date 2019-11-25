@@ -61,6 +61,7 @@ namespace CoreAutomotive
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+            app.UseAuthorization();
             DbInitializer.SeedData(userManager);
             app.UseMvc(
                 routes =>

@@ -30,7 +30,7 @@ namespace CoreAutomotive.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginVM loginVM)
+        public async Task<IActionResult> Login(LoginVM loginVM, string returnUrl)
         {
             if (!ModelState.IsValid) return View(loginVM);
 
@@ -41,7 +41,10 @@ namespace CoreAutomotive.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        return Redirect(returnUrl);
+                    else
+                        return RedirectToAction("Index", "Home");
                 }
             }
 
@@ -58,7 +61,7 @@ namespace CoreAutomotive.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterVM registerVM)
+        public async Task<IActionResult> Register(RegisterVM registerVM, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +80,10 @@ namespace CoreAutomotive.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                        return Redirect(returnUrl);
+                    else
+                        return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
             }
 

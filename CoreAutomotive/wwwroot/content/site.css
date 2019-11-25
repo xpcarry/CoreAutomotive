@@ -49,15 +49,21 @@ span.tab-space {
     text-align: center;
 }
 
-.carousel-inner > .item > img {
-    margin: auto;
-    width: 100%
+div#carouselCars{
+    width:100%
 }
 
-.carousel .img-responsive {
-    width: 100%;
+div#thumbnailC {
+    background-color: rgb(90, 98, 104);
 }
 
+a.carousel-control-prev:hover {
+    background-color: rgb(52, 58, 64);
+}
+
+a.carousel-control-next:hover {
+    background-color: rgb(52, 58, 64);
+}
 .cardetails{
     font-family: 'Open Sans', sans-serif;
 }

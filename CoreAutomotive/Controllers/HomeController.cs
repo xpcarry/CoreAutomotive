@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CoreAutomotive.Models;
 using CoreAutomotive.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -57,23 +58,26 @@ namespace CoreAutomotive.Controllers
             return View(vm);
         }
 
-        public async Task<IActionResult> Contact(string _toUserName)
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Contact(string Message, string toUser)
         {
+            //var toUser = UserName;
             var fromUser = await _userManager.GetUserAsync(HttpContext.User);
+            
 
-            var vm = new ContactVM
+            if (ModelState.IsValid)
             {
-                fromUserName = fromUser.UserName,
-                toUserName = _toUserName
-            };
-            return View();
-        }
+                if (!string.IsNullOrEmpty(Message) && toUser != null && fromUser != null)
+                {
+                    //send e-mail, redirect to "EmailSent"
+                    System.Console.WriteLine("success");
+                }
+            }
 
-       [HttpPost]
-       public async Task<IActionResult> Contact()
-        {
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

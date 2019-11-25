@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using CoreAutomotive.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -11,9 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CoreAutomotive.Controllers
 {
+    [Authorize]
     public class CarController : Controller
     {
-
+        
         private readonly ICarRepository _CarRepository;
         private IWebHostEnvironment _env;
 
@@ -39,7 +38,6 @@ namespace CoreAutomotive.Controllers
             return View(Car);
         }
 
-        [Authorize]
         public IActionResult Create(string FileName)
         {
             if (!string.IsNullOrEmpty(FileName))
