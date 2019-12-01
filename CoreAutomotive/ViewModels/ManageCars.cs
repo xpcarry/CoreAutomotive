@@ -9,6 +9,7 @@ namespace CoreAutomotive.ViewModels
     public class ManageCars
     {
         public List<Car> Cars { get; set; }
+        public List<Picture> Pictures { get; set; }
         public string UserName { get; set; }
     }
 }

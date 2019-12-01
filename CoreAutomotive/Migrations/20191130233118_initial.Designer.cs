@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreAutomotive.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191106224955_Initial")]
-    partial class Initial
+    [Migration("20191130233118_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,9 +48,6 @@ namespace CoreAutomotive.Migrations
                     b.Property<string>("Model")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PictureUrl")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Power")
                         .HasColumnType("TEXT");
 
@@ -59,9 +56,6 @@ namespace CoreAutomotive.Migrations
 
                     b.Property<int>("ProductionYear")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("ThumbnailUrl")
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
@@ -99,6 +93,31 @@ namespace CoreAutomotive.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Opinie");
+                });
+
+            modelBuilder.Entity("CoreAutomotive.Models.Picture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("PictureUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ThumbnailUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("Pictures");
                 });
 
             modelBuilder.Entity("CoreAutomotive.Models.Role", b =>
@@ -302,6 +321,15 @@ namespace CoreAutomotive.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CoreAutomotive.Models.Picture", b =>
+                {
+                    b.HasOne("CoreAutomotive.Models.Car", null)
+                        .WithMany("Pictures")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

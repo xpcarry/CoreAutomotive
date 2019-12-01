@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CoreAutomotive.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
+﻿using CoreAutomotive.Models;
+using CoreAutomotive.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 
 namespace CoreAutomotive
 {
@@ -43,8 +34,11 @@ namespace CoreAutomotive
 
             //services.AddIdentity<IdentityUser, IdentityRole>()
             //        .AddEntityFrameworkStores<AppDbContext>();
+            services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.AddTransient<ICarRepository, CarRepository>();
+            services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IOpiniaRepository, OpiniaRepository>();
+            services.AddTransient<IPictureRepository, PictureRepository>();
             services.AddMvc(options =>
             {
                 options.EnableEndpointRouting = false;
@@ -56,9 +50,9 @@ namespace CoreAutomotive
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<UserData> userManager)
         {
+            app.UseStaticFiles();
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
-            app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();

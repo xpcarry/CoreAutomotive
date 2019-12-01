@@ -24,8 +24,9 @@ namespace CoreAutomotive.Controllers
         }
 
         // GET: /<controller>/
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -104,7 +105,8 @@ namespace CoreAutomotive.Controllers
             //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             var user = await GetCurrentUserAsync();
             var userId = user.Id;
-            var myCars = _context.Cars.Where(c => c.UserId == userId).ToList();
+            var myCars = _context.Cars.Where(c => c.UserId == userId);
+            var myPictures = _context.Pictures.Where(p => p.UserId == userId).ToList();
 
             var vm = new MyProfileVM()
             {
@@ -114,7 +116,8 @@ namespace CoreAutomotive.Controllers
                 Surname = user.Surname,
                 City = user.City,
                 DateJoined = user.DateJoined,
-                MyCars = myCars
+                MyCars = myCars,
+                Pictures = myPictures
             };
 
             return View(vm);
@@ -134,7 +137,8 @@ namespace CoreAutomotive.Controllers
                 UserName = user.UserName,
                 Email = user.Email,
                 DateJoined = user.DateJoined,
-                UserCars = _context.Cars.Where(c => c.UserId == user.Id).ToList()
+                UserCars = _context.Cars.Where(c => c.UserId == user.Id).ToList(),
+                UserPictures = _context.Pictures.Where(p => p.UserId == user.Id).ToList()
             };
 
             return View(model);

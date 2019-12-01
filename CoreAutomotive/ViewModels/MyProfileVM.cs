@@ -15,6 +15,7 @@ namespace CoreAutomotive.ViewModels
         public string City { get; set; }
         public DateTime DateJoined { get; set; }
         public IEnumerable<Car> MyCars { get; set; }
+        public List<Picture> Pictures { get; set; }
 
     }
 }

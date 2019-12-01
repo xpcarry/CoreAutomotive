@@ -1,4 +1,4 @@
-﻿@model Car
+﻿@model CarVM
 
 <div class="container">
     <h2>Edytuj Car</h2>
@@ -7,7 +7,7 @@
         <div class="col-md-4 container">
             <form method="post" enctype="multipart/form-data" asp-action="FileUpload">
                 <div class="form-group">
-                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Car.Id" />
                     <label class="control-label">Zdjęcie Caru</label> <br />
                     <img src="@ViewBag.ImgPath" height="300" width="300" /> <br />
                     <input type="file" name="file" style="margin-top:10px" />
@@ -20,57 +20,57 @@
         </div>
         <form asp-action="Edit" class="container">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Car.Id" />
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="Brand" class="control-label"></label>
-                    <input asp-for="Brand" class="form-control" />
-                    <span asp-validation-for="Brand" class="text-danger"></span>
+                    <label asp-for="Car.Brand" class="control-label"></label>
+                    <input asp-for="Car.Brand" class="form-control" />
+                    <span asp-validation-for="Car.Brand" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Model" class="control-label"></label>
-                    <input asp-for="Model" class="form-control" />
-                    <span asp-validation-for="Model" class="text-danger"></span>
+                    <label asp-for="Car.Model" class="control-label"></label>
+                    <input asp-for="Car.Model" class="form-control" />
+                    <span asp-validation-for="Car.Model" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ProductionYear" class="control-label">Rok Produkcji</label>
-                    <input asp-for="ProductionYear" class="form-control" />
-                    <span asp-validation-for="ProductionYear" class="text-danger"></span>
+                    <label asp-for="Car.ProductionYear" class="control-label">Rok Produkcji</label>
+                    <input asp-for="Car.ProductionYear" class="form-control" />
+                    <span asp-validation-for="Car.ProductionYear" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Mileage" class="control-label"></label>
-                    <input asp-for="Mileage" class="form-control" />
-                    <span asp-validation-for="Mileage" class="text-danger"></span>
+                    <label asp-for="Car.Mileage" class="control-label"></label>
+                    <input asp-for="Car.Mileage" class="form-control" />
+                    <span asp-validation-for="Car.Mileage" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Engine" class="control-label"></label>
-                    <input asp-for="Engine" class="form-control" />
-                    <span asp-validation-for="Engine" class="text-danger"></span>
+                    <label asp-for="Car.Engine" class="control-label"></label>
+                    <input asp-for="Car.Engine" class="form-control" />
+                    <span asp-validation-for="Car.Engine" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label asp-for="FuelType" class="control-label">Rodzaj Paliwa</label>
-                    <input asp-for="FuelType" class="form-control" />
-                    <span asp-validation-for="FuelType" class="text-danger"></span>
+                    <label asp-for="Car.FuelType" class="control-label">Rodzaj Paliwa</label>
+                    <input asp-for="Car.FuelType" class="form-control" />
+                    <span asp-validation-for="Car.FuelType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Power" class="control-label"></label>
-                    <input asp-for="Power" class="form-control" />
-                    <span asp-validation-for="Power" class="text-danger"></span>
+                    <label asp-for="Car.Power" class="control-label"></label>
+                    <input asp-for="Car.Power" class="form-control" />
+                    <span asp-validation-for="Car.Power" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Price" class="control-label"></label>
-                    <input asp-for="Price" class="form-control" />
-                    <span asp-validation-for="Price" class="text-danger"></span>
+                    <label asp-for="Car.Price" class="control-label"></label>
+                    <input asp-for="Car.Price" class="form-control" />
+                    <span asp-validation-for="Car.Price" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control info" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <label asp-for="Car.Description" class="control-label"></label>
+                    <input asp-for="Car.Description" class="form-control info" />
+                    <span asp-validation-for="Car.Description" class="text-danger"></span>
                 </div>
-                <input type="hidden" asp-for="PictureUrl" value="@ViewBag.ImgPath" />
-                <input type="hidden" asp-for="ThumbnailUrl" value="@ViewBag.ImgPath" />
+                <input type="hidden" asp-for="Pictures[0].PictureUrl" value="@ViewBag.ImgPath" />
+                <input type="hidden" asp-for="Pictures[0].ThumbnailUrl" value="@ViewBag.ImgPath" />
 
                 <div class="form-group">
                     <input type="submit" value="Edit Car" class="btn btn-success" style="margin-top:30px" />

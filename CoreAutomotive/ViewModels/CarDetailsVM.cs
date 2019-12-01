@@ -17,8 +17,10 @@ namespace CoreAutomotive.ViewModels
         public string Email { get; set; }
         public DateTime DateJoined { get; set; }
 
+        [Required]
         [StringLength(maximumLength: 300, MinimumLength = 15, ErrorMessage = "Your message must have 15-300 characters")]
         public string Message { get; set; }
-        public string toUser { get; set; }
+        public string ReturnUrl { get; set; }
+        public List<Picture> Pictures { get; set; }
     }
 }

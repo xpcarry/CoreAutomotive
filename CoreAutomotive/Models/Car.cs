@@ -17,8 +17,11 @@ namespace CoreAutomotive.Models
         public string Power { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public string PictureUrl { get; set; }
-        public string ThumbnailUrl { get; set; }
+        //public string PictureUrl { get; set; }
+        //public string ThumbnailUrl { get; set; }
+
+        public List<Picture> Pictures { get; set; }
+
         public DateTime DateAdded { get; set; }
         public bool Approved { get; set; }
         public int UserId { get; set; }

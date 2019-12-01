@@ -36,7 +36,7 @@
                             <td>@Html.DisplayFor(modelItem => item.Power)</td>
                             <td>@Html.DisplayFor(modelItem => item.Description)</td>
                             <td>@Html.DisplayFor(modelItem => item.Price)</td>
-                            <td><img src="@item.ThumbnailUrl" height="100" width="100" /></td>
+                            <td><img src="@item.Pictures[0].ThumbnailUrl" height="100" width="100" /></td>
 
                         </tr>
                     }

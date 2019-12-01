@@ -12,6 +12,7 @@ namespace CoreAutomotive.ViewModels
         public List<Car> Cars { get; set; }
         public string UserName { get; set; }
         public DateTime DateAdded { get; set; }
+        public List<Picture> Pictures { get; set; }
 
     }
 }

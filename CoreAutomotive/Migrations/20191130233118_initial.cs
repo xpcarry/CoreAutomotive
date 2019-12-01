@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoreAutomotive.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -67,8 +67,6 @@ namespace CoreAutomotive.Migrations
                     Power = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
-                    PictureUrl = table.Column<string>(nullable: true),
-                    ThumbnailUrl = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     Approved = table.Column<bool>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
@@ -201,6 +199,28 @@ namespace CoreAutomotive.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Pictures",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ThumbnailUrl = table.Column<string>(nullable: true),
+                    PictureUrl = table.Column<string>(nullable: true),
+                    CarId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pictures", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pictures_Cars_CarId",
+                        column: x => x.CarId,
+                        principalTable: "Cars",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -237,6 +257,11 @@ namespace CoreAutomotive.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pictures_CarId",
+                table: "Pictures",
+                column: "CarId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -257,16 +282,19 @@ namespace CoreAutomotive.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Cars");
+                name: "Opinie");
 
             migrationBuilder.DropTable(
-                name: "Opinie");
+                name: "Pictures");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Cars");
         }
     }
 }
