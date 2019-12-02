@@ -1,0 +1,94 @@
+﻿@model int
+
+<div class="container">
+
+    <button id="inputMask">Upload Image</button>
+    <div class="row" id="ImageHolder">
+
+    </div>
+
+    <form id="holder" method="post" enctype="multipart/form-data" asp-action="AddPictures" asp-controller="Pictures" >
+        <input type="hidden" id="carId" name="carId" value="@ViewBag.Id" />
+        <h1>Form</h1>
+        
+        <input type="submit" />
+    </form>
+
+</div>
+
+@section Scripts{
+    <script>
+
+        $(document).ready(() => {
+            let inputs = [];
+            //Model binding name
+            let name = "files";
+
+            let loadImagesFromInputs = () => {
+                $("#ImageHolder").empty();
+
+                //Lets load those images
+                if (!FileReader) {
+
+                    console.log("Cant load files in the navigator");
+                    return;
+                }
+
+                //For each input
+                inputs.forEach(i => {
+                    //for each file in each input
+                    Array.from(i.files).forEach(f => {
+                        //prepare the file reader
+                        let fr = new FileReader();
+
+                        //this will run when conversion is finished
+                        fr.onload = function () {
+
+                            $("#ImageHolder").append($("<img>", {
+                                src: fr.result,
+                                height: 350,
+                                width: 350
+                            }));
+                        }
+                        //convert file to url
+                        fr.readAsDataURL(f);
+                    });
+                });
+            }
+
+            $("#inputMask").click(() => {
+
+                //Create file input
+                let newInput = $("<input>", {
+                    type: "file",
+                    name: name,
+                    id: name,
+                    multiple: true,
+                    accept: "image/x-png,image/gif,image/jpeg"
+                }).css({ width: "1", position: "absolute", opacity: "0" });
+
+                //update the list of images on change
+                newInput.change((e) => { loadImagesFromInputs() });
+
+                //Add input to list of inputs
+                inputs.push(newInput[0]);
+                //Add input to form
+                $("#holder").append(newInput);
+                //Click input
+                newInput.click();
+            });
+
+
+
+            $("#holder").submit((e) => {
+                e.preventDefault();
+
+                e.target.submit();
+            })
+
+        });
+
+
+    </script>
+
+}

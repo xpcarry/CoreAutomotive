@@ -1,0 +1,54 @@
+﻿@model ViewProfile
+
+<div class="container">
+
+    <h4>@Model.UserName</h4>
+    <p>E-mail: @Model.Email</p>
+    <p>User since: @Model.DateJoined.Date.ToShortDateString()</p>
+
+    <div class="container-fluid">
+        <table class="table" style="background-color:gainsboro">
+            <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Mileage</th>
+                    <th>Engine</th>
+                    <th>Fuel</th>
+                    <th>Power</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Thumbnail</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.UserCars)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Brand)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ProductionYear)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Mileage)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Engine)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FuelType)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Power)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                        @if (item.Pictures != null)
+                        {
+                            <td><img src="@item.Pictures[0].ThumbnailUrl" height="100" width="100" /></td>
+                        }
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+</div>

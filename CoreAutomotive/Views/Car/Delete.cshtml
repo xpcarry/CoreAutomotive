@@ -1,0 +1,34 @@
+﻿@model CarVM
+
+<div class="container">
+    <div class="thumbnail container">
+        <div class="row">
+            <div class="col-md-6">
+                @if (Model.Car.Pictures != null)
+                {
+                    <img alt="@Model.Car.Brand" src="@Model.Pictures[0].PictureUrl" height="500" width="500" />
+                }
+
+            </div>
+            <div class="col-md-6">
+                <h3>@Model.Car.Brand - @Model.Car.Model</h3>
+                <h4>@Model.Car.Price</h4>
+                <h4>@Model.Car.ProductionYear</h4>
+                <h4>@Model.Car.Mileage</h4>
+                <h4>@Model.Car.Engine</h4>
+                <h4>@Model.Car.Power</h4>
+                <p>@Model.Car.Description</p>
+                <h2>Are you sure you want to delete that car?</h2>
+                <h4 class="offset-md-6">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Car.Id" />
+                        @if (Model.Car.Pictures != null)
+                        {<input type="hidden" asp-for="Pictures[0].PictureUrl" />}
+                        <input type="submit" value="Delete" class="btn btn-success" />
+                        <a asp-action="Index" class="btn btn-success">Back</a>
+                    </form>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>

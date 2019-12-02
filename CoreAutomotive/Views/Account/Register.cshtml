@@ -1,0 +1,87 @@
+﻿@model RegisterVM
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Create Account</h1>
+        <p class="lead text-muted">Add announcement and sell your car!</p>
+    </div>
+</section>
+
+<div class="container">
+
+    <div class="offset-sm-3">
+        <form asp-action="Register" asp-controller="Account" method="post" class="form-horizontal" role="form">
+
+            <div class="form-group">
+                <label asp-for="UserName" class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Surname" class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="Surname" class="form-control" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="City" class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="col-sm-4 control-label">Phone Number</label>
+                <div class="col-sm-8">
+                    <input asp-for="PhoneNumber" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="col-sm-4 control-label"></label>
+                <div class="col-sm-8">
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="col-sm-4 control-label">Confirm Password</label>
+                <div class="col-sm-8">
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-primary" value="Register" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
