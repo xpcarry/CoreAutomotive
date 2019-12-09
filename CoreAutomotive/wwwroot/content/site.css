@@ -67,3 +67,8 @@ a.carousel-control-next:hover {
 .cardetails{
     font-family: 'Open Sans', sans-serif;
 }
+
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}

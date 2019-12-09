@@ -37,7 +37,6 @@ namespace CoreAutomotive
             services.Configure<EmailSettings>(Configuration.GetSection("EmailSettings"));
             services.AddTransient<ICarRepository, CarRepository>();
             services.AddTransient<IEmailService, EmailService>();
-            services.AddTransient<IOpiniaRepository, OpiniaRepository>();
             services.AddTransient<IPictureRepository, PictureRepository>();
             services.AddMvc(options =>
             {
@@ -48,7 +47,7 @@ namespace CoreAutomotive
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<UserData> userManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<UserData> userManager, RoleManager<Role> roleManager)
         {
             app.UseStaticFiles();
             app.UseDeveloperExceptionPage();
@@ -56,7 +55,7 @@ namespace CoreAutomotive
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
-            DbInitializer.SeedData(userManager);
+            DbInitializer.SeedData(userManager, roleManager);
             app.UseMvc(
                 routes =>
                 {

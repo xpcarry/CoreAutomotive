@@ -1,17 +1,17 @@
 ﻿@model CarVM
 
-<div class="jumbotron">
+<section class="jumbotron text-center">
     <div class="container">
-        <h1 class="display-4 text-center">Car Details</h1>
+        <h1 class="jumbotron-heading">Add Car</h1>
+        <p class="lead text-muted">Give us some information about your car</p>
     </div>
-</div>
+</section>
 <div class="container">
-    <h2>Add Car</h2>
     <hr />
-    <div class="row">
+    <div class="row offset-sm-3">
         <form asp-action="Create" class="container">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="col-md-4">
+            <div class="col-sm-7">
                 <div class="form-group">
                     <label asp-for="Car.Brand" class="control-label"></label>
                     <input asp-for="Car.Brand" class="form-control" />
@@ -37,8 +37,6 @@
                     <input asp-for="Car.Engine" class="form-control" />
                     <span asp-validation-for="Car.Engine" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="Car.FuelType" class="control-label"></label>
                     <input asp-for="Car.FuelType" class="form-control" />
@@ -56,22 +54,16 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Car.Description" class="control-label"></label>
-                    <input asp-for="Car.Description" class="form-control info" />
+                    <textarea asp-for="Car.Description" class="form-control" rows="4"></textarea>
                     <span asp-validation-for="Car.Description" class="text-danger"></span>
                 </div>
                 <input type="hidden" asp-for="Pictures[0].PictureUrl" value="@ViewBag.ImgPath" />
                 <input type="hidden" asp-for="Pictures[0].ThumbnailUrl" value="@ViewBag.ImgPath" />
 
-                @*<input type="hidden" asp-for="Pictures[0].PictureUrl" value="@ViewBag.ImgPath" />
-                    <input type="hidden" asp-for="Pictures[0].ThumbnailUrl" value="@ViewBag.ImgPath" />
-
-                    <input type="hidden" asp-for="Pictures[0].PictureUrl" value="@ViewBag.ImgPath" />
-                    <input type="hidden" asp-for="Pictures[0].ThumbnailUrl" value="@ViewBag.ImgPath" />*@
-
-                <div class="form-group">
-                    <input type="submit" value="Add Car" class="btn btn-success" style="margin-top:30px" />
-                    <a asp-action="Index" class="btn btn-danger pull-right" style="margin-top:30px">Back</a>
-                </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-danger float-left" style="margin-top:30px">Back</a>
+                <input type="submit" value="Add Pictures" class="btn btn-success float-right" style="margin-top:30px" />
+            </div>
             </div>
         </form>
     </div>

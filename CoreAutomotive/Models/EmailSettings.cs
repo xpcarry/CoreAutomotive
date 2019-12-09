@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CoreAutomotive.Models
+﻿namespace CoreAutomotive.Models
 {
     public class EmailSettings
     {

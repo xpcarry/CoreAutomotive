@@ -32,9 +32,18 @@ namespace CoreAutomotive.Controllers
 
         public IActionResult Index()
         {
+            var cars = _carRepository.GetAllCars();
+            var pictures = _pictureRepository.GetAllPictures();
+            return View(cars);
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult Manage()
+        {
             var Pictures = _pictureRepository.GetAllPictures();
-            var Cars = _carRepository.GetAllCars();
-            return View(Cars);
+            var cars = _carRepository.GetAllCars();
+            return View(cars);
         }
 
         public IActionResult Details(int id)
@@ -109,7 +118,7 @@ namespace CoreAutomotive.Controllers
             if (ModelState.IsValid)
             {
                 _carRepository.EditCar(vm.Car);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Manage));
             }
             return View(vm);
         }
@@ -153,7 +162,7 @@ namespace CoreAutomotive.Controllers
 
                 _carRepository.DeleteCar(Car);
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Manage));
             }
             return View(Car);
         }

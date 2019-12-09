@@ -66,33 +66,6 @@ namespace CoreAutomotive.Migrations
                     b.ToTable("Cars");
                 });
 
-            modelBuilder.Entity("CoreAutomotive.Models.Opinia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NazwaUzytkownika")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("OczekujeOdpowiedzi")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Wiadomosc")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(5000);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Opinie");
-                });
-
             modelBuilder.Entity("CoreAutomotive.Models.Picture", b =>
                 {
                     b.Property<int>("Id")

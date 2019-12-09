@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CoreAutomotive.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,22 +75,6 @@ namespace CoreAutomotive.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cars", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Opinie",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    NazwaUzytkownika = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    Wiadomosc = table.Column<string>(maxLength: 5000, nullable: false),
-                    OczekujeOdpowiedzi = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Opinie", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -280,9 +264,6 @@ namespace CoreAutomotive.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "Opinie");
 
             migrationBuilder.DropTable(
                 name: "Pictures");

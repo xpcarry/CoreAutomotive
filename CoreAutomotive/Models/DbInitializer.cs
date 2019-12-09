@@ -8,13 +8,23 @@ namespace CoreAutomotive.Models
     public static class DbInitializer
     {
 
-        public static void SeedData(UserManager<UserData> userManager)
+        public static void SeedData(UserManager<UserData> userManager, RoleManager<Role> roleManager)
         {
-            SeedUsers(userManager);
+            SeedRoles(roleManager);
+            SeedUsers(userManager, roleManager);
+        }
+
+        public static void SeedRoles(RoleManager<Role> roleManager)
+        {
+            if (!roleManager.Roles.Any())
+            {
+                roleManager.CreateAsync(new Role() {Name = "User" });
+                roleManager.CreateAsync(new Role() {Name = "Admin"});
+            }
         }
 
 
-        public static void SeedUsers(UserManager<UserData> userManager)
+        public static void SeedUsers(UserManager<UserData> userManager, RoleManager<Role> roleManager)
         {
             if (!userManager.Users.Any())
             {
@@ -30,7 +40,13 @@ namespace CoreAutomotive.Models
                     PhoneNumber = "1234",
                     UserName = "admin",
                 };
-                var result = userManager.CreateAsync(user, password: "Admin1!");
+                
+
+                IdentityResult result = userManager.CreateAsync(user, password: "Admin1!").Result;
+                if (result.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user, "Admin");
+                }
 
                 var user2 =
                 new UserData
@@ -46,6 +62,10 @@ namespace CoreAutomotive.Models
                 };
 
                 IdentityResult result2 = userManager.CreateAsync(user2, password: "Test1!").Result;
+                if (result2.Succeeded)
+                {
+                    userManager.AddToRoleAsync(user2, "User");
+                }
 
             }
         }
@@ -91,8 +111,8 @@ namespace CoreAutomotive.Models
                     Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/audiS5.jpg", ThumbnailUrl = "/images/audiS5.jpg", UserId = 1 } } },
                 new Car { 
                     Id=3,
-                    UserId = 1,
-                    UserName="admin",
+                    UserId = 2,
+                    UserName="test",
                     DateAdded = DateTime.Now,
                     Brand="BMV",
                     Model="X4",
@@ -106,8 +126,8 @@ namespace CoreAutomotive.Models
                     Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/bmvx4.jpg", ThumbnailUrl = "/images/bmvx4.jpg", UserId=1 } } },
                 new Car { 
                     Id=4,
-                    UserId = 1, 
-                    UserName="admin", 
+                    UserId = 2, 
+                    UserName="test", 
                     DateAdded = DateTime.Now, 
                     Brand="Chevrolet", 
                     Model="Corvette", 
@@ -141,6 +161,8 @@ namespace CoreAutomotive.Models
 
                 //2nd soulution context.AddRange( new Car..)
             }
+
+
 
 
 

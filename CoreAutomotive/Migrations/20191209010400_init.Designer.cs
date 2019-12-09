@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreAutomotive.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191202012935_initial")]
-    partial class initial
+    [Migration("20191209010400_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,33 +66,6 @@ namespace CoreAutomotive.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cars");
-                });
-
-            modelBuilder.Entity("CoreAutomotive.Models.Opinia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NazwaUzytkownika")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("OczekujeOdpowiedzi")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Wiadomosc")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(5000);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Opinie");
                 });
 
             modelBuilder.Entity("CoreAutomotive.Models.Picture", b =>

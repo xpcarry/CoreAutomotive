@@ -1,4 +1,3 @@
-
 using CoreAutomotive;
 using CoreAutomotive.Models;
 using Microsoft.AspNetCore;
@@ -7,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Komis
+
+namespace CoreAutomotive
 {
     public class Program
     {

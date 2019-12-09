@@ -18,7 +18,6 @@ namespace CoreAutomotive.Models
         }
 
         public DbSet<Car> Cars { get; set; }
-        public DbSet<Opinia> Opinie { get; set; }
         public DbSet<Picture> Pictures { get; set; }
 
     }
