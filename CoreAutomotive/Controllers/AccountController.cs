@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreAutomotive.Models;
@@ -14,12 +15,16 @@ namespace CoreAutomotive.Controllers
 
         private readonly SignInManager<UserData> _signInManager;
         private readonly UserManager<UserData> _userManager;
+        private readonly RoleManager<Role> _roleManager;
         private readonly AppDbContext _context;
 
-        public AccountController(SignInManager<UserData> signInManager, UserManager<UserData> userManager, AppDbContext context)
+
+        public AccountController(SignInManager<UserData> signInManager, UserManager<UserData> userManager, AppDbContext context,
+            RoleManager<Role> roleManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _roleManager = roleManager;
             _context = context;
         }
 
@@ -144,6 +149,45 @@ namespace CoreAutomotive.Controllers
             return View(model);
         }
 
+
+        public async Task<IActionResult> ManageUsers()
+        {
+            var roles =  _roleManager.Roles;
+
+            if (roles == null)
+            {
+                ViewBag.ErrorMessage = "Any roles cannot be found";
+                return View("NotFound");
+            }
+
+            var vm = new List<ManageUsersVM>();
+
+            foreach (var role in roles)
+            {
+                foreach (var user in _userManager.Users)
+                {
+                    if (await _userManager.IsInRoleAsync(user, role.Name))
+                    {
+                        var userRole = new ManageUsersVM()
+                        {
+                            UserName = user.UserName,
+                            RoleName = role.Name,
+                            RoleId = role.Id,
+                            UserId = user.Id
+                        };
+                        vm.Add(userRole);
+                    }
+                }
+
+            }
+
+            return View(vm);
+        }
+
+        //public Task<IActionResult> ManageUsers(ManageUsersVM vm)
+        //{
+        //    return View(vm);
+        //}
 
         public IActionResult AccessDenied()
         {
