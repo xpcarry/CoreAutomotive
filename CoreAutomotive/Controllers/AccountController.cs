@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoreAutomotive.Models;
 using CoreAutomotive.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -82,14 +83,18 @@ namespace CoreAutomotive.Controllers
                     DateJoined = DateTime.Now
 
                 };
-                var result = await _userManager.CreateAsync(user, registerVM.Password);
+                var addUser = await _userManager.CreateAsync(user, registerVM.Password);
 
-                if (result.Succeeded)
+                if (addUser.Succeeded)
                 {
-                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                        return Redirect(returnUrl);
-                    else
-                        return RedirectToAction(nameof(HomeController.Index), "Home");
+                    var result = await _userManager.AddToRoleAsync(user, "User");
+                    if (result.Succeeded)
+                    {
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                            return Redirect(returnUrl);
+                        else
+                            return RedirectToAction(nameof(HomeController.Index), "Home");
+                    }
                 }
             }
 
@@ -149,10 +154,10 @@ namespace CoreAutomotive.Controllers
             return View(model);
         }
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ManageUsers()
         {
-            var roles =  _roleManager.Roles;
+            var roles = await _roleManager.Roles.ToListAsync();
 
             if (roles == null)
             {
@@ -160,7 +165,13 @@ namespace CoreAutomotive.Controllers
                 return View("NotFound");
             }
 
-            var vm = new List<ManageUsersVM>();
+            var vm = new ManageUsersVM()
+            {
+                Roles = new List<Role>(),
+                UsersWithRoles = new List<UsersWithRoles>(),
+            };
+
+            vm.Roles.AddRange(roles);
 
             foreach (var role in roles)
             {
@@ -168,14 +179,14 @@ namespace CoreAutomotive.Controllers
                 {
                     if (await _userManager.IsInRoleAsync(user, role.Name))
                     {
-                        var userRole = new ManageUsersVM()
+                        var usersRoles = new UsersWithRoles()
                         {
                             UserName = user.UserName,
                             RoleName = role.Name,
                             RoleId = role.Id,
                             UserId = user.Id
                         };
-                        vm.Add(userRole);
+                        vm.UsersWithRoles.Add(usersRoles);
                     }
                 }
 
@@ -184,10 +195,68 @@ namespace CoreAutomotive.Controllers
             return View(vm);
         }
 
-        //public Task<IActionResult> ManageUsers(ManageUsersVM vm)
-        //{
-        //    return View(vm);
-        //}
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditUsersInRole(int id)
+        {
+            ViewBag.roleId = id;
+            var role = await _roleManager.FindByIdAsync(id.ToString());
+            ViewBag.RoleName = role.Name;
+
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+                return View("NotFound");
+            }
+
+            var vm = new List<UsersWithRoles>();
+
+            foreach (var user in _userManager.Users)
+            {
+                var userRole = new UsersWithRoles
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName
+                };
+
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                    userRole.IsSelected = true;
+                else
+                    userRole.IsSelected = false;
+
+                vm.Add(userRole);
+            }
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> EditUsersInRole(List<UsersWithRoles> userRoles, string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            int i = 0;
+            foreach (var item in userRoles)
+            {
+                i++;
+                IdentityResult result = null;
+                var user = await _userManager.FindByIdAsync(item.UserId.ToString());
+
+                if (item.IsSelected && !(await _userManager.IsInRoleAsync(user, role.Name)))
+                    result = await _userManager.AddToRoleAsync(user, role.Name);
+                else if (!item.IsSelected && (await _userManager.IsInRoleAsync(user, role.Name)))
+                    result = await _userManager.RemoveFromRoleAsync(user, role.Name);
+                else continue;
+
+                if (result.Succeeded)
+                {
+                    if (i < (userRoles.Count - 1))
+                        continue;
+                    else
+                        return RedirectToAction("ManageUsers");
+                }
+            }
+            return RedirectToAction("ManageUsers");
+        }
 
         public IActionResult AccessDenied()
         {
