@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreAutomotive.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191209010400_init")]
+    [Migration("20191213210915_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,9 +24,6 @@ namespace CoreAutomotive.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Approved")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Brand")
                         .HasColumnType("TEXT");
 
@@ -38,6 +35,9 @@ namespace CoreAutomotive.Migrations
 
                     b.Property<string>("Engine")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("Featured")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FuelType")
                         .HasColumnType("TEXT");

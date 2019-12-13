@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Car>
+﻿@model List<Car>
 
 <div class="jumbotron">
     <div class="container">
@@ -9,54 +9,68 @@
 <div class="container bg-light">
     <h4 class="p-sm-2">Search for a car</h4>
     <input type="text" class="form-control col-md-3 mb-2" id="myinput" placeholder="Search">
-
-    <table class="table table-striped table-bordered" style="width:100%">
-        <thead>
-            <tr>
-                <th>Thumbnail</th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Year</th>
-                <th>Mileage</th>
-                <th>Engine</th>
-                <th>Price</th>
-                <th>Username</th>
-                <th>Date Added</th>
-                <th>
-                    <a asp-action="Create" class="btn btn-success">Add new car</a>
-                </th>
-            </tr>
-        </thead>
-        <tbody id="cartable">
-            @foreach (var item in Model)
-            {
+    <form method="post">
+        <table class="table table-striped table-bordered" style="width:100%">
+            <thead>
                 <tr>
-                    @if (item.Pictures != null)
-                    {
-                        <td><img src="@item.Pictures.ElementAt(0).ThumbnailUrl" height="100" width="100" class="rounded" /></td>
-                    }
-                    else
-                    {
-                        <td><img src="" height="100" width="100" class="rounded" /></td>
-}
-
-                    <td>@Html.DisplayFor(modelItem => item.Brand)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Model)</td>
-                    <td>@Html.DisplayFor(modelItem => item.ProductionYear)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Mileage)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Engine)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
-                    <td><a asp-action="ViewProfile" asp-controller="Account" asp-route-id="@item.UserId">@Html.DisplayFor(modelItem => item.UserName)</a></td>
-                    <td>@Html.DisplayFor(modelItem => item.DateAdded)</td>
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary" style="margin-bottom:3px">Details</a>
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary" style="margin-bottom:3px">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="margin-bottom:3px">Delete</a>
-                    </td>
+                    <th>Thumbnail</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Mileage</th>
+                    <th>Engine</th>
+                    <th>Price</th>
+                    <th>Username</th>
+                    <th>Date Added</th>
+                    <th>Featured</th>
+                    <th>
+                        <a asp-action="Create" class="btn btn-success">Add new car</a>
+                    </th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody id="cartable">
+                @for (int i=0; i<Model.Count; i++)
+                {
+                    <tr>
+                        @if (Model[i].Pictures != null)
+                        {
+                            <td><img src="@Model[i].Pictures.ElementAt(0).ThumbnailUrl" height="100" width="100" class="rounded" /></td>
+                        }
+                        else
+                        {
+                            <td><img src="" height="100" width="100" class="rounded" /></td>
+                        }
+
+                        <td>@Model[i].Brand</td>
+                        <td>@Model[i].Model</td>
+                        <td>@Model[i].ProductionYear</td>
+                        <td>@Model[i].Mileage</td>
+                        <td>@Model[i].Engine</td>
+                        <td>@Model[i].Price</td>
+                        <td><a asp-action="ViewProfile" asp-controller="Account" asp-route-id="@Model[i].UserId">@Model[i].UserName</a></td>
+                        <td>@Model[i].DateAdded</td>
+                        <td>
+                            <div class="form-check m-2 form-group">
+                                <input type="hidden" asp-for="@Model[i].Id" />
+                                <input asp-for="@Model[i].Featured" class="form-check-input" />
+                            </div>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@Model[i].Id" class="btn btn-outline-secondary" style="margin-bottom:3px">Details</a>
+                            <a asp-action="Edit" asp-route-id="@Model[i].Id" class="btn btn-outline-secondary" style="margin-bottom:3px">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@Model[i].Id" class="btn btn-danger" style="margin-bottom:3px">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="form-group float-right">
+            <input type="submit" value="Save Changes" class="btn btn-primary" />
+        </div>
+    </form>
+
+
+
 
 </div>
 

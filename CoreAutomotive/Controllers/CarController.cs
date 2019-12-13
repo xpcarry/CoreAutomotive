@@ -42,8 +42,44 @@ namespace CoreAutomotive.Controllers
         public IActionResult Manage()
         {
             var Pictures = _pictureRepository.GetAllPictures();
-            var cars = _carRepository.GetAllCars();
+            var cars = _carRepository.GetAllCars().ToList();
             return View(cars);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Manage(List<Car> cars)
+        {
+
+            if (cars == null)
+            {
+                ViewBag.ErrorMessage = $"Any car cannot be found";
+                return View("NotFound");
+            }
+
+            int i = 0;
+            foreach (var item in cars)
+            {
+                i++;
+                var car = _carRepository.GetCarById(item.Id);
+                if (item.Featured && !car.Featured)
+                {
+                    car.Featured = true;
+                    _carRepository.EditCar(car);
+                }
+                else if (!item.Featured && car.Featured)
+                {
+                    car.Featured = false;
+                    _carRepository.EditCar(car);
+                }
+                else continue;
+
+                if (i < cars.Count - 1)
+                    continue;
+                else
+                    RedirectToAction("Manage");
+            }
+            return RedirectToAction("Manage");
         }
 
         public IActionResult Details(int id)
@@ -141,7 +177,6 @@ namespace CoreAutomotive.Controllers
         }
 
 
-        //Doweryfikacji
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(Car Car)

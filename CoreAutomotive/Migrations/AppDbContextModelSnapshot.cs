@@ -22,9 +22,6 @@ namespace CoreAutomotive.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Approved")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Brand")
                         .HasColumnType("TEXT");
 
@@ -36,6 +33,9 @@ namespace CoreAutomotive.Migrations
 
                     b.Property<string>("Engine")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("Featured")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FuelType")
                         .HasColumnType("TEXT");

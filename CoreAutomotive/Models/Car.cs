@@ -17,7 +17,7 @@ namespace CoreAutomotive.Models
         public decimal Price { get; set; }
         public List<Picture> Pictures { get; set; } = null;
         public DateTime DateAdded { get; set; }
-        public bool Approved { get; set; }
+        public bool Featured { get; set; }
         public int UserId { get; set; }
         public string UserName { get; set; }
     }

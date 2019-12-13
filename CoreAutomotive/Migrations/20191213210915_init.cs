@@ -68,7 +68,7 @@ namespace CoreAutomotive.Migrations
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
                     DateAdded = table.Column<DateTime>(nullable: false),
-                    Approved = table.Column<bool>(nullable: false),
+                    Featured = table.Column<bool>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
                     UserName = table.Column<string>(nullable: true)
                 },

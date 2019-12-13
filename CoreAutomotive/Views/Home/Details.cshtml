@@ -13,43 +13,30 @@
             <div class="row" id="carouselContainer">
                 <div id="carouselCars" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselCars" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselCars" data-slide-to="1"></li>
-                        <li data-target="#carouselCars" data-slide-to="2"></li>
+                        @if (Model.Pictures != null)
+                        {
+                            <li data-target="#carouselCars" data-slide-to="0" class="active"></li>
+                            var p = Model.Pictures.Count;
+                            for (int i = 1; i < p; i++)
+                            {
+                                <li data-target="#carouselCars" data-slide-to="@i"></li>
+                            }
+                        }
                     </ol>
                     <div class="carousel-inner">
                         @if (Model.Pictures != null)
                         {
-                            switch (Model.Pictures.Count)
+                            <div class="carousel-item active">
+                                <img class="d-block mx-auto rounded" src="@Model.Car.Pictures[0].PictureUrl" alt="First slide">
+                            </div>
+
+                            var p = Model.Pictures.Count;
+                            for (int i = 1; i < p; i++)
                             {
-                                case 1:
-                                    <div class="carousel-item active">
-                                        <img class="d-block mx-auto rounded" src="@Model.Car.Pictures[0].PictureUrl" alt="First slide">
-                                    </div>
-                                    break;
+                                <div class="carousel-item">
+                                    <img class="d-block mx-auto rounded" src="@Model.Car.Pictures[i].PictureUrl" alt="@i slide">
+                                </div>
 
-                                case 2:
-                                    <div class="carousel-item active">
-                                        <img class="d-block mx-auto rounded" src="@Model.Car.Pictures[0].PictureUrl" alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block mx-auto" src="@Model.Car.Pictures[1].PictureUrl" alt="Second slide">
-                                    </div>
-                                    break;
-
-                                case 3:
-                                    <div class="carousel-item active">
-                                        <img class="d-block mx-auto rounded" src="@Model.Car.Pictures[0].PictureUrl" alt="First slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block mx-auto" src="@Model.Car.Pictures[1].PictureUrl" alt="Second slide">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img class="d-block mx-auto" src="@Model.Car.Pictures[2].PictureUrl" alt="Third slide">
-                                    </div>
-                                    break;
-                                default:
-                                    break;
                             }
                         }
                     </div>
