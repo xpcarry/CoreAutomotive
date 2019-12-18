@@ -120,12 +120,8 @@ namespace CoreAutomotive.Controllers
 
             var vm = new MyProfileVM()
             {
-                UserName = user.UserName,
-                Email = user.Email,
-                Name = user.Name,
-                Surname = user.Surname,
-                City = user.City,
-                DateJoined = user.DateJoined,
+                User = user,
+                CarAmount = _context.Cars.Where(c => c.UserId == userId).Count(),
                 MyCars = myCars,
                 Pictures = myPictures
             };
@@ -148,7 +144,9 @@ namespace CoreAutomotive.Controllers
                 Email = user.Email,
                 DateJoined = user.DateJoined,
                 UserCars = _context.Cars.Where(c => c.UserId == user.Id).ToList(),
-                UserPictures = _context.Pictures.Where(p => p.UserId == user.Id).ToList()
+                CarsAmount = _context.Cars.Where(c => c.UserId == user.Id).Count(),
+                UserPictures = _context.Pictures.Where(p => p.UserId == user.Id).ToList(),
+                City = user.City
             };
 
             return View(model);

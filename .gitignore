@@ -340,3 +340,10 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /CoreAutomotive/wwwroot/lib
+CoreAutomotive/.vscode/launch.json
+.vscode/launch.json
+.DS_Store
+.vscode/tasks.json
+CoreAutomotive/.vscode/tasks.json
+.DS_Store
+.DS_Store

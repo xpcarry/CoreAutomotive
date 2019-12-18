@@ -1,54 +1,81 @@
 ﻿@model ViewProfile
 
 <div class="container">
+  <div class="display-4" style="margin-top: 100px; margin-bottom: 30px;">@Model.UserName</div>
+  <div style="margin-top:30px; margin-bottom: 30px; font-size: 22px;">
+    <p>City: @Model.City</p>
+    <p>Announcements: @Model.CarsAmount</p>
+    <p>E-mail address:<a href="mailto:@Model.Email"> @Model.Email</a></p>
+    <p style="text-muted">User since: @Model.DateJoined.Date.ToShortDateString()</p>
+  </div>
 
-    <h4>@Model.UserName</h4>
-    <p>E-mail: @Model.Email</p>
-    <p>User since: @Model.DateJoined.Date.ToShortDateString()</p>
+  <div class="album py-5 bg-light">
+    <div class="container">
+    <div class="row">
+      @foreach (var car in Model.UserCars) {
 
-    <div class="container-fluid">
-        <table class="table" style="background-color:gainsboro">
-            <thead>
-                <tr>
-                    <th>Brand</th>
-                    <th>Model</th>
-                    <th>Year</th>
-                    <th>Mileage</th>
-                    <th>Engine</th>
-                    <th>Fuel</th>
-                    <th>Power</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Thumbnail</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.UserCars)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Brand)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Model)</td>
-                        <td>@Html.DisplayFor(modelItem => item.ProductionYear)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Mileage)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Engine)</td>
-                        <td>@Html.DisplayFor(modelItem => item.FuelType)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Power)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Price)</td>
-                        @if (item.Pictures != null)
-                        {
-                            <td><img src="@item.Pictures[0].ThumbnailUrl" height="100" width="100" /></td>
-                        }
-
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-
+        <div class="col-sm-6 mt-3">
+          <div class="card car-">
+            <div class="card-horizontal">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-7 pl-0 pr-0">
+                    <div class="img-square-wrapper">
+                      @if (car.Pictures != null) {
+                      <a
+                        asp-action="Details"
+                        asp-controller="Home"
+                        asp-route-id="@car.Id"
+                      >
+                        <img
+                          class=""
+                          src="@car.Pictures[0].ThumbnailUrl"
+                          height="180"
+                          width="300"
+                          alt="Card image cap"
+                        />
+                      </a>
+                      } else {
+                      <a
+                        asp-action="Details"
+                        asp-controller="Home"
+                        asp-route-id="@car.Id"
+                      >
+                        <img
+                          class=""
+                          src="http://via.placeholder.com/300x180"
+                          alt="Card image cap"
+                        />
+                      </a>
+                      }
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <a
+                      style="color:unset"
+                      asp-action="Details"
+                      asp-controller="Home"
+                      asp-route-id="@car.Id"
+                      ><h4 class="card-title">@car.Brand @car.Model</h4>
+                      </a>
+                    <span>Price: @car.Price</span><br />
+                    <span>Year: @car.ProductionYear</span><br />
+                    <span>Mileage: @car.Mileage</span><br />
+                    <span>Power: @car.Power</span><br />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted"
+                >Posted on @car.DateAdded.ToShortDateString() by
+                </small>
+            </div>
+          </div>
+        </div>
+      
+      }
+      </div>
     </div>
-
-
-
+  </div>
 </div>
