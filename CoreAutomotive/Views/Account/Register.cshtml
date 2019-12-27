@@ -1,12 +1,6 @@
 ﻿@model RegisterVM
 
-
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">Create Account</h1>
-        <p class="lead text-muted">Add announcement and sell your car!</p>
-    </div>
-</section>
+@await Component.InvokeAsync("Heading", new HeadingVM { Header = "Create Account", Caption = "Add announcement and sell your car!" });
 
 <div class="container">
 

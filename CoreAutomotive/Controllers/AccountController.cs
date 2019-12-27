@@ -109,9 +109,11 @@ namespace CoreAutomotive.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
         private Task<UserData> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
-        public async Task<IActionResult> MyProfile()
+        public async Task<IActionResult> MyProfile(string message)
         {
+            ViewBag.Message = message;
             //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             var user = await GetCurrentUserAsync();
             var userId = user.Id;
@@ -128,6 +130,79 @@ namespace CoreAutomotive.Controllers
 
             return View(vm);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditMyProfile(MyProfileVM profileEdit)
+        {
+            if (profileEdit == null)
+            {
+                ViewBag.ErrorMessage = "Something went wrong :(";
+                return View("NotFound");
+            }
+
+
+            var user = await GetCurrentUserAsync();
+            var updatedUser = profileEdit.User;
+
+            if (!string.IsNullOrEmpty(profileEdit.NewPassword) && profileEdit.NewPassword == profileEdit.NewPasswordConfirm)
+            {
+                var newPassword = _userManager.PasswordHasher.HashPassword(user, profileEdit.NewPassword);
+                user.PasswordHash = newPassword;
+                var resultPassword = await _userManager.UpdateAsync(user);
+
+                if (resultPassword.Succeeded)
+                    return RedirectToAction("MyProfile", new { message = "You have updated your password!"});
+                else
+                {
+                    ViewBag.ErrorMessage = $"Unable to load user with ID {user.Id}";
+                    return NotFound();
+                }
+            }
+
+            if (updatedUser != null)
+            {
+
+                if (!string.IsNullOrEmpty(updatedUser.Email) && (user.Email != updatedUser.Email))
+                {
+                    user.Email = updatedUser.Email;
+                    var resultEmail = await _userManager.UpdateAsync(user);
+                    if (resultEmail.Succeeded)
+                        return RedirectToAction("MyProfile", new { message = "You have updated your e-mail address!"});
+                    else
+                    {
+                        ViewBag.ErrorMessage = $"Unable to load user with ID {user.Id}";
+                        return NotFound();
+                    }
+                }
+
+
+                if (!string.IsNullOrEmpty(updatedUser.Name) && (user.Name != updatedUser.Name))
+                {
+                    user.Name = updatedUser.Name;
+                }
+                if (!string.IsNullOrEmpty(updatedUser.Surname) && (user.Surname != updatedUser.Surname))
+                {
+                    user.Surname = updatedUser.Surname;
+                }
+                if (!string.IsNullOrEmpty(updatedUser.City) && (user.City != updatedUser.City))
+                {
+                    user.City = updatedUser.City;
+                }
+                if (!string.IsNullOrEmpty(updatedUser.PhoneNumber) && (user.PhoneNumber != updatedUser.PhoneNumber))
+                {
+                    user.PhoneNumber = updatedUser.PhoneNumber;
+                }
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("MyProfile", new { message = "You have updated your personal data!" });
+                }
+            }
+
+            return RedirectToAction("MyProfile");
+        }
+
 
         public async Task<IActionResult> ViewProfile(int? id)
         {

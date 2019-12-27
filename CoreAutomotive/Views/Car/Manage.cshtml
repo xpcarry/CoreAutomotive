@@ -1,10 +1,6 @@
 ﻿@model List<Car>
 
-<div class="jumbotron">
-    <div class="container">
-        <h1 class="display-4 text-center">Manage cars</h1>
-    </div>
-</div>
+@await Component.InvokeAsync("Heading", new HeadingVM { Header = "Manage Cars"});
 
 <div class="container bg-light">
     <h4 class="p-sm-2">Search for a car</h4>
@@ -29,7 +25,7 @@
                 </tr>
             </thead>
             <tbody id="cartable">
-                @for (int i=0; i<Model.Count; i++)
+                @for (int i = 0; i < Model.Count; i++)
                 {
                     <tr>
                         @if (Model[i].Pictures != null)

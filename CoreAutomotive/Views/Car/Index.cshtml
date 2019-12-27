@@ -1,11 +1,6 @@
 ﻿@model IEnumerable<Car>
 
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">Search for a car</h1>
-        <p class="lead text-muted">Hopefully you will find something for yourself!</p>
-    </div>
-</section>
+@await Component.InvokeAsync("Heading", new HeadingVM { Header = "Search for a car", Caption = "Hopefully you will find something for yourself!" });
 
 <div class="album py-5 bg-light">
     <div class="container">

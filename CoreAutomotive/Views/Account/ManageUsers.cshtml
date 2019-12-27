@@ -1,10 +1,7 @@
 ﻿@model ManageUsersVM
 
-<section class="jumbotron text-center">
-    <div class="container">
-        <h2 class="jumbotron-heading">Manage user roles</h2>
-    </div>
-</section>
+@await Component.InvokeAsync("Heading", new HeadingVM { Header = "Manage user roles" });
+
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
@@ -13,22 +10,23 @@
 
                 <div class="col-sm-6">
                     <div class="card">
-                        <h4 class="card-header">@role.Name
+                        <h4 class="card-header">
+                            @role.Name
                         <a asp-action="EditUsersInRole" asp-controller="Account" asp-route-id="@role.Id" class="btn btn-primary float-right">Edit members</a>
-                        </h4>
-                        <div class="card-body">
-                            @foreach (var user in Model.UsersWithRoles)
+                    </h4>
+                    <div class="card-body">
+                        @foreach (var user in Model.UsersWithRoles)
+                        {
+                            if (user.RoleName == role.Name)
                             {
-                                if (user.RoleName == role.Name)
-                                {
-                                    <h5 class="card-text">@user.UserName</h5>
-                                }
+                                <h5 class="card-text">@user.UserName</h5>
                             }
-                        </div>
+                        }
                     </div>
                 </div>
+            </div>
 
-            }
+        }
         </div>
 
 

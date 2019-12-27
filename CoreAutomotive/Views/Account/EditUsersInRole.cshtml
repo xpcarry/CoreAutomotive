@@ -1,28 +1,25 @@
 ﻿@model List<UsersWithRoles>
 
-@{ 
+@{
     var roleId = ViewBag.roleId;
 }
 
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">@ViewBag.RoleName role</h1>
-    </div>
-</section>
+@await Component.InvokeAsync("Heading", new HeadingVM { Header = $"{@ViewBag.RoleName} role"});
+
 
 <div class="container">
     <form method="post">
-        <div class="card" >
+        <div class="card">
             <div class="card-header">
                 <h2>Add or remove users from this role</h2>
             </div>
             <div class="card-body form-group">
-                @for (int i=0; i<Model.Count; i++)
+                @for (int i = 0; i < Model.Count; i++)
                 {
                     <div class="form-check m-1">
                         <input type="hidden" asp-for="@Model[i].UserId" />
                         <input asp-for="@Model[i].IsSelected" class="form-check-input" />
-                        <label asp-for="@Model[i].IsSelected" class="form-check-label" >
+                        <label asp-for="@Model[i].IsSelected" class="form-check-label">
                             @Model[i].UserName
                         </label>
                     </div>

@@ -1,11 +1,6 @@
 ﻿@model CoreAutomotive.ViewModels.HomeVM
 
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">@Model.Tytul</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents</p>
-    </div>
-</section>
+@await Component.InvokeAsync("Heading", new HeadingVM {Header ="Cars Overview", Caption ="Something short and leading about the collection below—its contents" });
 
 <div class="album py-5 bg-light">
     <div class="container">

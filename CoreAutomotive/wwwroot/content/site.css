@@ -72,3 +72,10 @@ a.carousel-control-next:hover {
     display: flex;
     flex: 1 1 auto;
 }
+
+div.personalData {
+    padding: 20px;
+    background-color: rgb(248, 249, 250);
+    border-radius: 25px;
+    margin-top: 20px;
+}

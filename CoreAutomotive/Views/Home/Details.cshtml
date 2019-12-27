@@ -1,11 +1,6 @@
 ﻿@model CarDetailsVM
 
-<section class="jumbotron text-center">
-    <div class="container">
-        <h1 class="jumbotron-heading">@Model.Car.Brand @Model.Car.Model / @Model.Car.ProductionYear</h1>
-        <p class="lead text-muted">See details</p>
-    </div>
-</section>
+@await Component.InvokeAsync("Heading", new HeadingVM { Header = $"{@Model.Car.Brand} / {@Model.Car.Model} / {@Model.Car.ProductionYear}", Caption = "See details" });
 
 <div class="album py-5 bg-light">
     <div class="container-fluid p-0 mb-3">
