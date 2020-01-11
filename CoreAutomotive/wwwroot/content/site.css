@@ -79,3 +79,43 @@ div.personalData {
     border-radius: 25px;
     margin-top: 20px;
 }
+
+.divouter {
+    position: relative;
+    background: #f90;
+    width: 340px;
+    height: 290px;
+    margin: 15px;
+}
+
+.mydivoverlap {
+    position: relative;
+    z-index: 1;
+}
+
+.mybuttonoverlap {
+    position: absolute;
+    z-index: 2;
+    top: 135px;
+    left: 140px;
+    display: none;
+}
+
+.divouter:hover .mybuttonoverlap {
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+}
+
+.divouter:hover .overlay {
+    display: block;
+    background: rgba(0, 0, 0, .3);
+}

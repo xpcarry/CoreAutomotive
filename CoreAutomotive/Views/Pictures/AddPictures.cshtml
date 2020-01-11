@@ -1,17 +1,17 @@
 ﻿@model int
 
+@await  Component.InvokeAsync("Heading", new HeadingVM {Header = "Add Pictures", Caption = "Show people pictures of the car" })
+
 <div class="container">
 
-    <button id="inputMask">Upload Image</button>
-    <div class="row" id="ImageHolder">
+    <button id="inputMask" class="btn btn-outline-secondary">Choose Pictures</button>
+    <div class="row" id="ImageHolder" style="padding: 20px; margin:20px; border-style:dotted; border-color:gray; ">
 
     </div>
 
     <form id="holder" method="post" enctype="multipart/form-data" asp-action="AddPictures" asp-controller="Pictures" >
-        <input type="hidden" id="carId" name="carId" value="@ViewBag.Id" />
-        <h1>Form</h1>
-        
-        <input type="submit" />
+        <input type="hidden" id="carId" name="carId" value="@ViewBag.Id" />  
+        <input type="submit" class="btn btn-primary" value="Upload" />
     </form>
 
 </div>
@@ -46,8 +46,8 @@
 
                             $("#ImageHolder").append($("<img>", {
                                 src: fr.result,
-                                height: 350,
-                                width: 350
+                                height: 300,
+                                width: 340
                             }));
                         }
                         //convert file to url
@@ -77,8 +77,6 @@
                 //Click input
                 newInput.click();
             });
-
-
 
             $("#holder").submit((e) => {
                 e.preventDefault();

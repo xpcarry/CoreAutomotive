@@ -1,6 +1,6 @@
 ﻿@model CoreAutomotive.ViewModels.HomeVM
 
-@await Component.InvokeAsync("Heading", new HeadingVM {Header ="Cars Overview", Caption ="Something short and leading about the collection below—its contents" });
+@await Component.InvokeAsync("Heading", new HeadingVM { Header = "Cars Overview", Caption = "Something short and leading about the collection below—its contents" });
 
 <div class="album py-5 bg-light">
     <div class="container">
@@ -20,7 +20,7 @@
                                 <h5>Mileage : @Car.Mileage</h5>
                                 <h5>Engine : @Car.Engine</h5>
                                 <h5>Power : @Car.Power</h5>
-                                <p id="description" class="card-text">@Car.Description</p>
+                                <div class="description card-text">@Car.Description</div>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <form method="post">
                                         <div class="btn-group">
@@ -42,3 +42,18 @@
     </div>
 
 </div>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+
+            $('.description').text(function () {
+                return $(this).text().substring(0, 150) + '...';
+            });
+
+        })
+
+    </script>
+
+}

@@ -1,27 +1,45 @@
 ﻿@model CarVM
 
+
+@await Component.InvokeAsync("Heading", new HeadingVM { Header = "Edit Car", Caption = $"{@Model.Car.Brand} / {@Model.Car.Model}" })
+
 <div class="container">
-    <h2>Edytuj Car</h2>
     <hr />
-    <div class="row">
-        <div class="col-md-4 container">
-            <form method="post" enctype="multipart/form-data" asp-action="FileUpload">
-                <div class="form-group">
-                    <input type="hidden" asp-for="Car.Id" />
-                    <label class="control-label">Zdjęcie Caru</label> <br />
-                    <img src="@ViewBag.ImgPath" height="300" width="300" /> <br />
-                    <input type="file" name="file" style="margin-top:10px" />
+    <div id="ImageHolder" class="row">
+        @if (Model.Pictures != null)
+        {
+            var p = Model.Pictures.Count;
+
+            for (int i = 0; i < p; i++)
+            {
+                <div class="divouter">
+                    <img class="editImg" src="@Model.Pictures[i].ThumbnailUrl" height="290" width="340" />
+                    <div class="overlay"></div>
+                    <input type="button" class="mybuttonoverlap btn btn-danger" value="Delete" />
                 </div>
 
-                <div class="form-group">
-                    <input type="submit" value="Załaduj zdjęcie" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
-        <form asp-action="Edit" class="container">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Car.Id" />
-            <div class="col-md-4">
+            }
+
+        }
+        else
+        {
+            <h3>There is no pictures of the car</h3>
+        }
+    </div>
+    <button id="inputMask" class="btn btn-outline-secondary" style="margin-bottom: 10px;">Add More Pictures</button>
+
+    <form id="holder" method="post" enctype="multipart/form-data" asp-action="AddPictures" asp-controller="Pictures">
+        <input type="hidden" id="carId" name="carId" value="@Model.Car.Id" />
+        <input type="submit" class="btn btn-primary" value="Save Pictures" />
+    </form>
+
+    <form asp-action="Edit" class="container" style="margin-top:50px;">
+        <h4>Car Information</h4>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Car.Id" />
+        <div class="row">
+
+            <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Car.Brand" class="control-label"></label>
                     <input asp-for="Car.Brand" class="form-control" />
@@ -42,13 +60,14 @@
                     <input asp-for="Car.Mileage" class="form-control" />
                     <span asp-validation-for="Car.Mileage" class="text-danger"></span>
                 </div>
+
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Car.Engine" class="control-label"></label>
                     <input asp-for="Car.Engine" class="form-control" />
                     <span asp-validation-for="Car.Engine" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="Car.FuelType" class="control-label">Rodzaj Paliwa</label>
                     <input asp-for="Car.FuelType" class="form-control" />
@@ -64,19 +83,102 @@
                     <input asp-for="Car.Price" class="form-control" />
                     <span asp-validation-for="Car.Price" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Car.Description" class="control-label"></label>
-                    <input asp-for="Car.Description" class="form-control info" />
-                    <span asp-validation-for="Car.Description" class="text-danger"></span>
-                </div>
+
                 <input type="hidden" asp-for="Pictures[0].PictureUrl" value="@ViewBag.ImgPath" />
                 <input type="hidden" asp-for="Pictures[0].ThumbnailUrl" value="@ViewBag.ImgPath" />
 
-                <div class="form-group">
-                    <input type="submit" value="Edit Car" class="btn btn-success" style="margin-top:30px" />
-                    <a asp-action="Index" class="btn btn-danger pull-right" style="margin-top:30px">Back</a>
-                </div>
             </div>
-        </form>
-    </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Car.Description" class="control-label"></label>
+            <textarea asp-for="Car.Description" class="form-control info" rows="3"></textarea>
+            <span asp-validation-for="Car.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-danger" style="margin-top:30px">Back</a>
+            <input type="submit" value="Save Changes" class="btn btn-success pull-right" style="margin-top:30px" />
+
+        </div>
+    </form>
+
 </div>
+
+@section Scripts{
+
+    <script>
+
+        $(document).ready(() => {
+            let inputs = [];
+            //Model binding name
+            let name = "files";
+
+            let loadImagesFromInputs = () => {
+                //$("#ImageHolder").empty();
+
+                //Lets load those images
+                if (!FileReader) {
+
+                    console.log("Cant load files in the navigator");
+                    return;
+                }
+
+                //For each input
+                inputs.forEach(i => {
+                    //for each file in each input
+                    Array.from(i.files).forEach(f => {
+                        //prepare the file reader
+                        let fr = new FileReader();
+
+                        //this will run when conversion is finished
+                        fr.onload = function () {
+
+                            $('#ImageHolder')
+                                .append($("<div class=divouter>")
+                                .append('<div class="overlay"></div>')
+                                .append($("<img>", {
+                                src: fr.result,
+                                height: 290,
+                                width: 340
+                                }))
+                                .append('<input type="button" class="mybuttonoverlap btn btn-danger" value="Delete" />'));
+
+                        }
+                        //convert file to url
+                        fr.readAsDataURL(f);
+                    });
+                });
+            }
+
+            $("#inputMask").click(() => {
+
+                //Create file input
+                let newInput = $("<input>", {
+                    type: "file",
+                    name: name,
+                    id: name,
+                    multiple: true,
+                    accept: "image/x-png,image/gif,image/jpeg"
+                }).css({ width: "1", position: "absolute", opacity: "0" });
+
+                //update the list of images on change
+                newInput.change((e) => { loadImagesFromInputs() });
+
+                //Add input to list of inputs
+                inputs.push(newInput[0]);
+                //Add input to form
+                $("#holder").append(newInput);
+                //Click input
+                newInput.click();
+            });
+
+            $("#holder").submit((e) => {
+                e.preventDefault();
+
+                e.target.submit();
+            })
+
+        });
+
+    </script>
+
+}
