@@ -178,7 +178,7 @@ namespace CoreAutomotive.Models
                     Description="BMV X4 20d xDrive. Samochod krajowy. Samochod serwisowany. Wystawiamy fakturę VAT 23%. Samochod bezwypadkowy. I właściciel.",
                     Price = 194000M,
                     Featured = true,
-                    Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/bmvx4.jpg", ThumbnailUrl = "/images/bmvx4.jpg", UserId=1 } } },
+                    Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/bmvx4.jpg", ThumbnailUrl = "/images/bmvx4.jpg", UserId=2 } } },
                 new Car {
                     Id=4,
                     UserId = 2,
@@ -194,7 +194,7 @@ namespace CoreAutomotive.Models
                     Description="Corvetta jest w świetnym stanie wizualnym i mechanicznym. Oczywiście jest ZAREJESTROWANA i ubezpieczona w PL.",
                     Price = 90000M,
                     Featured = true,
-                    Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/chevroletCorvete.jpg", ThumbnailUrl = "/images/chevroletCorvete.jpg", UserId=1 } } },
+                    Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/chevroletCorvete.jpg", ThumbnailUrl = "/images/chevroletCorvete.jpg", UserId=2 } } },
                 new Car {
                     Id=5,
                     UserId = 2,

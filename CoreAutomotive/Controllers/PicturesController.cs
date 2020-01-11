@@ -45,8 +45,8 @@ namespace CoreAutomotive.Controllers
 
             foreach (var formFile in files)
             {
-                var filePath = Path.Combine(webRoot.ToString() + "\\images\\" + formFile.FileName);
-                var imgPath = "/Images/" + formFile.FileName;
+                var filePath = Path.Combine(webRoot.ToString() + "//images//" + formFile.FileName);
+                var imgPath = "/images/" + formFile.FileName;
 
                 var user = await _userManager.GetUserAsync(HttpContext.User);
 
