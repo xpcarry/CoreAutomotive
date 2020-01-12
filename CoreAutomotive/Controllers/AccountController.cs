@@ -55,7 +55,7 @@ namespace CoreAutomotive.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Nazwa użytkownika / hasło jest niepoprawne");
+            ModelState.AddModelError("", "Incorrect username or password");
 
             return View(loginVM);
         }
@@ -79,7 +79,7 @@ namespace CoreAutomotive.Controllers
                     Email = registerVM.Email,
                     PhoneNumber = registerVM.PhoneNumber,
                     City = registerVM.City,
-                    UserName = registerVM.Email,
+                    UserName = registerVM.UserName,
                     DateJoined = DateTime.Now
 
                 };
@@ -87,13 +87,31 @@ namespace CoreAutomotive.Controllers
 
                 if (addUser.Succeeded)
                 {
-                    var result = await _userManager.AddToRoleAsync(user, "User");
-                    if (result.Succeeded)
+                    try
+                    {
+                        var result = await _userManager.AddToRoleAsync(user, "User");
+                        if (result.Succeeded)
+                        {
+                            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                                return Redirect(returnUrl);
+                            else
+                                return RedirectToAction(nameof(HomeController.Index), "Home");
+                        }
+                    }
+                    catch
                     {
                         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                             return Redirect(returnUrl);
                         else
                             return RedirectToAction(nameof(HomeController.Index), "Home");
+                    }
+
+                }
+                else
+                {
+                    foreach (var error in addUser.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
                     }
                 }
             }
@@ -115,7 +133,13 @@ namespace CoreAutomotive.Controllers
         {
             ViewBag.Message = message;
             //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
             var userId = user.Id;
             var myCars = _context.Cars.Where(c => c.UserId == userId);
             var myPictures = _context.Pictures.Where(p => p.UserId == userId).ToList();
@@ -151,7 +175,7 @@ namespace CoreAutomotive.Controllers
                 var resultPassword = await _userManager.UpdateAsync(user);
 
                 if (resultPassword.Succeeded)
-                    return RedirectToAction("MyProfile", new { message = "You have updated your password!"});
+                    return RedirectToAction("MyProfile", new { message = "You have updated your password!" });
                 else
                 {
                     ViewBag.ErrorMessage = $"Unable to load user with ID {user.Id}";
@@ -167,7 +191,7 @@ namespace CoreAutomotive.Controllers
                     user.Email = updatedUser.Email;
                     var resultEmail = await _userManager.UpdateAsync(user);
                     if (resultEmail.Succeeded)
-                        return RedirectToAction("MyProfile", new { message = "You have updated your e-mail address!"});
+                        return RedirectToAction("MyProfile", new { message = "You have updated your e-mail address!" });
                     else
                     {
                         ViewBag.ErrorMessage = $"Unable to load user with ID {user.Id}";

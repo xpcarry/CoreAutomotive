@@ -71,8 +71,6 @@ namespace CoreAutomotive.Controllers
 
             return RedirectToAction("Details", "Home", new {id = Convert.ToInt32(carId) });
 
-
-
         }
     }
 }

@@ -28,7 +28,7 @@ namespace CoreAutomotive
                 }
                 catch (Exception ex)
                 {
-                    // rejestracja wyjatkow 
+                    throw new Exception(ex.Message);
                 }
             }
 

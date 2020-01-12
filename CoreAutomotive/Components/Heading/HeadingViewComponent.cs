@@ -17,7 +17,7 @@ namespace CoreAutomotive.ViewComponents
 
         public async Task <IViewComponentResult> InvokeAsync(HeadingVM vm)
         {
-            return View(vm);
+            return await Task.Run(() => View(vm));
         }
 
 
