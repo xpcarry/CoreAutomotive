@@ -216,7 +216,7 @@ namespace CoreAutomotive.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(Car Car)
         {
-            if (ModelState.IsValid)
+            if (Car.Id != 0)
             {
                 //delete pictures
                 var webRoot = _env.WebRootPath;
@@ -229,12 +229,12 @@ namespace CoreAutomotive.Controllers
                         System.IO.File.Delete(filePath);
                     }
                 }
-
-                _carRepository.DeleteCar(Car);
+                var car = _carRepository.GetCarById(Car.Id);
+                _carRepository.DeleteCar(car);
 
                 return RedirectToAction(nameof(Manage));
             }
-            return View(Car);
+            return RedirectToAction(nameof(Manage));
         }
     }
 }

@@ -19,7 +19,7 @@
                 <h4>@Model.Car.Power</h4>
                 <p>@Model.Car.Description</p>
                 <h2>Are you sure you want to delete that car?</h2>
-                <h4 class="offset-md-6">
+                <div class="offset-md-6">
                     <form asp-action="Delete">
                         <input type="hidden" asp-for="Car.Id" />
                         @if (Model.Car.Pictures != null)
@@ -27,7 +27,7 @@
                         <input type="submit" value="Delete" class="btn btn-success" />
                         <a asp-action="Index" class="btn btn-success">Back</a>
                     </form>
-                </h4>
+                </div>
             </div>
         </div>
     </div>
