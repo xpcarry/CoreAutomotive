@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreAutomotive.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20191213210915_init")]
+    [Migration("20200115063332_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,7 @@ namespace CoreAutomotive.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Brand")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateAdded")
@@ -46,13 +47,14 @@ namespace CoreAutomotive.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Model")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Power")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Price")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductionYear")
                         .HasColumnType("INTEGER");

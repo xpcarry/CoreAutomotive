@@ -7,6 +7,6 @@ namespace CoreAutomotive.ViewModels
     {
         public Car Car { get; set; }
         public List<Picture> Pictures { get; set; }
-        public string ActionCode { get; set; } = "0";
+        public string ErrorMsg { get; set; }
     }
 }

@@ -4,9 +4,18 @@
 
 <div class="container">
     <hr />
+    <div class="offset-sm-3 mb-3">
+        <div class="col-sm-7">
+            <a asp-action="Create" asp-controller="Car" asp-route-migrate="@true" class="btn btn-outline-secondary">Migrate from CarService</a>
+            @if (!string.IsNullOrEmpty(ViewBag.ErrorMsg))
+            {
+                <p class="text-danger">@ViewBag.ErrorMsg</p>
+            }
+
+        </div>
+    </div>
     <div class="row offset-sm-3">
         <form asp-action="Create" class="container">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-sm-7">
                 <div class="form-group">
                     <label asp-for="Car.Brand" class="control-label"></label>
@@ -53,8 +62,8 @@
                     <textarea asp-for="Car.Description" class="form-control" rows="4"></textarea>
                     <span asp-validation-for="Car.Description" class="text-danger"></span>
                 </div>
-                <input type="hidden" asp-for="Pictures[0].PictureUrl" value="@ViewBag.ImgPath" />
-                <input type="hidden" asp-for="Pictures[0].ThumbnailUrl" value="@ViewBag.ImgPath" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="form-group">
                     <a asp-action="Index" class="btn btn-danger float-left" style="margin-top:30px">Back</a>

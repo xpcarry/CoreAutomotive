@@ -23,6 +23,7 @@ namespace CoreAutomotive.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Brand")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateAdded")
@@ -44,13 +45,14 @@ namespace CoreAutomotive.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Model")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Power")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Price")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("ProductionYear")
                         .HasColumnType("INTEGER");

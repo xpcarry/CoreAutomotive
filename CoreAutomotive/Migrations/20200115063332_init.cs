@@ -36,7 +36,6 @@ namespace CoreAutomotive.Migrations
                     PasswordHash = table.Column<string>(nullable: true),
                     SecurityStamp = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
@@ -45,7 +44,8 @@ namespace CoreAutomotive.Migrations
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
-                    DateJoined = table.Column<DateTime>(nullable: false)
+                    DateJoined = table.Column<DateTime>(nullable: false),
+                    PhoneNumber = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -58,15 +58,15 @@ namespace CoreAutomotive.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Brand = table.Column<string>(nullable: true),
-                    Model = table.Column<string>(nullable: true),
+                    Brand = table.Column<string>(nullable: false),
+                    Model = table.Column<string>(nullable: false),
                     ProductionYear = table.Column<int>(nullable: false),
                     Mileage = table.Column<string>(nullable: true),
                     Engine = table.Column<string>(nullable: true),
                     FuelType = table.Column<string>(nullable: true),
                     Power = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
                     DateAdded = table.Column<DateTime>(nullable: false),
                     Featured = table.Column<bool>(nullable: false),
                     UserId = table.Column<int>(nullable: false),

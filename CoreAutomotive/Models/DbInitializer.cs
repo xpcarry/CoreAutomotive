@@ -144,7 +144,7 @@ namespace CoreAutomotive.Models
                     FuelType= "benzyna",
                     Power = "421 KM",
                     Description="Mam do sprzedania Mustanga 5.0 GT V8 421KM. Kupiony w Polskim SALONIE FORDA w Opolu jako NOWY w kwietniu 2016",
-                    Price = 160000M,
+                    Price = 160000,
                     Featured = true,
                     Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/fordMustang.jpg", ThumbnailUrl = "/images/fordMustang.jpg", UserId=1} } },
                 new Car {
@@ -160,7 +160,7 @@ namespace CoreAutomotive.Models
                     FuelType= "benzyna",
                     Power = "280 KM",
                     Description="Do sprzedania Audi S5 z 2013 roku. Jestem właścicielem tego samochodu od ponad dwóch lat.",
-                    Price = 115000M,
+                    Price = 115000,
                     Featured = true,
                     Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/audiS5.jpg", ThumbnailUrl = "/images/audiS5.jpg", UserId = 1 } } },
                 new Car {
@@ -176,7 +176,7 @@ namespace CoreAutomotive.Models
                     FuelType= "benzyna",
                     Power = "190 KM",
                     Description="BMV X4 20d xDrive. Samochod krajowy. Samochod serwisowany. Wystawiamy fakturę VAT 23%. Samochod bezwypadkowy. I właściciel.",
-                    Price = 194000M,
+                    Price = 194000,
                     Featured = true,
                     Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/bmvx4.jpg", ThumbnailUrl = "/images/bmvx4.jpg", UserId=2 } } },
                 new Car {
@@ -192,7 +192,7 @@ namespace CoreAutomotive.Models
                     FuelType= "benzyna",
                     Power = "300 KM",
                     Description="Corvetta jest w świetnym stanie wizualnym i mechanicznym. Oczywiście jest ZAREJESTROWANA i ubezpieczona w PL.",
-                    Price = 90000M,
+                    Price = 90000,
                     Featured = true,
                     Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/chevroletCorvete.jpg", ThumbnailUrl = "/images/chevroletCorvete.jpg", UserId=2 } } },
                 new Car {
@@ -208,7 +208,7 @@ namespace CoreAutomotive.Models
                     FuelType= "benzyna",
                     Power = "410 KM",
                     Description="Na sprzedaż trafia moja perełka Nissan Skyline R33.Auto z Japonii sprowadzone do Szwecji, gdzie było przez wiele lat modyfikowane, uczestniczyło w zlotach, zdobywało nagrody, Samochod sponsorowany latami przez Sonax Sweden.",
-                    Price = 120000M,
+                    Price = 120000,
                     Featured = false,
                     Pictures = new List<Picture>{ new Picture { PictureUrl = "/images/nissan.jpg", ThumbnailUrl = "/images/nissan.jpg", UserId=2 } } },
 

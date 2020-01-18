@@ -44,6 +44,15 @@ namespace CoreAutomotive
             });
 
 
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:6001");
+                });
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +64,7 @@ namespace CoreAutomotive
             app.UseCookiePolicy();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCors("CorsPolicy");
             DbInitializer.SeedData(userManager, roleManager);
             app.UseMvc(
                 routes =>
@@ -64,6 +74,7 @@ namespace CoreAutomotive
                     template: "{controller=Home}/{Action=Index}/{id?}");
                 }
                 );
+          
 
         }
     }

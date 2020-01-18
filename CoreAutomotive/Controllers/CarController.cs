@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CoreAutomotive.Models;
 using CoreAutomotive.ViewModels;
@@ -10,6 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace CoreAutomotive.Controllers
 {
@@ -101,8 +105,39 @@ namespace CoreAutomotive.Controllers
         //    return View();
         //}
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create(bool migrate)
         {
+            if (migrate)
+            {
+                var client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+                try
+                {
+                    var response = await client.GetAsync("http://localhost:6000/api/Car");
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = client.GetStringAsync("http://localhost:6000/api/Car");
+
+                        var json = await result;
+
+                        Car car = JsonConvert.DeserializeObject<Car>(json);
+                        var vm = new CarVM()
+                        {
+                            Car = car
+                        };
+                        return View(vm);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.ErrorMsg = ex.Message;
+                }
+
+            }
+
             return View();
         }
 
@@ -201,31 +236,5 @@ namespace CoreAutomotive.Controllers
             }
             return View(Car);
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> FileUpload(IFormCollection form)
-        //{
-        //    var webRoot = _env.WebRootPath;
-        //    var filePath = Path.Combine(webRoot.ToString() + "\\images\\" + form.Files[0].FileName);
-
-        //    if (form.Files[0].FileName.Length > 0)
-        //    {
-        //        using (var stream = new FileStream(filePath, FileMode.Create))
-        //        {
-        //            await form.Files[0].CopyToAsync(stream);
-        //        }
-        //    }
-        //    if (Convert.ToString(form["Id"]) == string.Empty || Convert.ToString(form["Id"]) == "0")
-        //    {
-        //        return RedirectToAction("Create", new {FileName = Convert.ToString(form.Files[0].FileName) });
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Edit", new { FileName = Convert.ToString(form.Files[0].FileName), id = Convert.ToString(form["Id"]) });
-        //    }
-        //}
-
-
-        
     }
 }
